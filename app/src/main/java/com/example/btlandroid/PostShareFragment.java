@@ -72,8 +72,7 @@ public class PostShareFragment extends Fragment {
                 "Sinh học",
                 "Ngữ văn",
                 "Lịch sử",
-                "Địa lý",
-                "Tiếng Anh"
+                "Địa lý"
         };
         ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, subjects);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
