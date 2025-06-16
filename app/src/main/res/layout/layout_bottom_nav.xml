@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="72dp"
+    android:orientation="horizontal"
+    android:background="#D50000"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:paddingStart="12dp"
+    android:paddingEnd="12dp"
+    android:gravity="center"
+    android:weightSum="3">
+
+    <ImageButton
+        android:id="@+id/btnChat"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:src="@drawable/ic_chat"
+        android:background="@null"
+        android:tint="#FFFFFF"
+        android:scaleType="centerInside"
+        android:contentDescription="Tin nhắn" />
+
+    <ImageButton
+        android:id="@+id/btnHome"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:src="@drawable/ic_home"
+        android:background="@null"
+        android:tint="#FFFFFF"
+        android:scaleType="centerInside"
+        android:contentDescription="Trang chủ" />
+
+    <ImageButton
+        android:id="@+id/btnProfile"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:src="@drawable/ic_profile"
+        android:background="@null"
+        android:tint="#FFFFFF"
+        android:scaleType="centerInside"
+        android:contentDescription="Cá nhân" />
+</LinearLayout>

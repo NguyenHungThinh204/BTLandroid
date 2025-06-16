@@ -1,0 +1,37 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:weightSum="3"
+    android:paddingTop="4dp"
+    android:paddingBottom="8dp">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_margin="6dp"
+        android:background="@drawable/bg_card_border_red"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView android:text="Tên người đăng"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#D50000"
+            android:textStyle="bold" />
+
+        <TextView android:text="Tiêu đề"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+
+        <TextView android:text="Nội dung cần giúp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#555555" />
+    </LinearLayout>
+
+    <!-- Lặp lại thêm 2 ô nữa nếu cần -->
+</LinearLayout>
