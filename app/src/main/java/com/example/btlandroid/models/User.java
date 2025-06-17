@@ -11,6 +11,7 @@ public class User {
     private boolean isTutorAvailable = false;
     private String position;
     private String departmentId;
+    private String skill;
 
     public User() {
     }
@@ -19,7 +20,7 @@ public class User {
         this.id = id;
     }
 
-    public User(float avgRating, String avtURL, String bio, String departmentId, String email, String id, boolean isTutorAvailable, String name, String phone, String position) {
+    public User(float avgRating, String avtURL, String bio, String departmentId, String email, String id, boolean isTutorAvailable, String name, String phone, String position, String skill) {
         this.avgRating = avgRating;
         this.avtURL = avtURL;
         this.bio = bio;
@@ -30,6 +31,7 @@ public class User {
         this.name = name;
         this.phone = phone;
         this.position = position;
+        this.skill = skill;
     }
 
     public float getAvgRating() {
@@ -110,5 +112,13 @@ public class User {
 
     public void setPosition(String position) {
         this.position = position;
+    }
+
+    public String getSkill() {
+        return skill;
+    }
+
+    public void setSkill(String skill) {
+        this.skill = skill;
     }
 }

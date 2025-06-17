@@ -77,6 +77,9 @@ public class ProfileActivity extends BaseActivity {
         if (!StringUtils.isBlank(currentUser.getPhone())) {
             tvSubject.setText(currentUser.getPhone());
         }
+        if (!StringUtils.isBlank(currentUser.getSkill())) {
+            tvSkill.setText(currentUser.getSkill());
+        }
     }
 
     private void setListeners() {
