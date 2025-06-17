@@ -9,8 +9,8 @@ import androidx.fragment.app.Fragment;
 
 import com.example.btlandroid.R;
 import com.example.btlandroid.databinding.ActivityMainBinding;
+import com.example.btlandroid.fragment.HomeFragmentUpdated;
 import com.example.btlandroid.ui.BaseActivity;
-import com.example.btlandroid.ui.chat.ChatFragment;
 import com.example.btlandroid.ui.profile.ProfileActivity;
 
 public class MainActivity extends BaseActivity {
@@ -65,9 +65,9 @@ public class MainActivity extends BaseActivity {
     }
 
     private void loadFragmentById(int id) {
-        Fragment fragment = new ChatFragment(); // mặc định là Home
+        Fragment fragment = new HomeFragmentUpdated(); // mặc định là Home
         if (id == R.id.navChat) {
-            fragment = new ChatFragment();
+            fragment = new HomeFragmentUpdated();
         } else if (id == R.id.navProfile) {
             profileLauncher.launch(new Intent(this, ProfileActivity.class));
             return;
