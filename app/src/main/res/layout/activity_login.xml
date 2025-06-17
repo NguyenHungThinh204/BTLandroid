@@ -36,7 +36,8 @@
         android:layout_marginBottom="16dp"
         android:autofillHints="emailAddress"
         android:background="@drawable/rounded_edit_text"
-        android:hint="username@gmail.com"
+        android:hint="user@gmail.com"
+        android:text="dev@gmail.com"
         android:inputType="textEmailAddress"
         android:paddingHorizontal="16dp"
         android:textColor="@color/black" />
@@ -60,6 +61,7 @@
         android:autofillHints="password"
         android:background="@drawable/rounded_edit_text"
         android:hint="**********"
+        android:text="123456"
         android:inputType="textPassword"
         android:paddingHorizontal="16dp"
         android:textColor="@color/black" />
