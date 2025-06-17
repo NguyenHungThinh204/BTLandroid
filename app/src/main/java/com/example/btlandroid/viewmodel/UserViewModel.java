@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.btlandroid.dto.Result;
+import com.example.btlandroid.dto.UserDetail;
 import com.example.btlandroid.models.User;
 import com.example.btlandroid.services.user.UserService;
 
@@ -12,9 +13,9 @@ public class UserViewModel extends ViewModel {
     private final UserService userService = new UserService();
     private final MutableLiveData<Result<User>> loginResult = new MutableLiveData<>();
     private final MutableLiveData<Result<User>> registerResult = new MutableLiveData<>();
-    private final MutableLiveData<Result<User>> getUserResult = new MutableLiveData<>();
+    private final MutableLiveData<Result<UserDetail>> getUserResult = new MutableLiveData<>();
 
-    private final MutableLiveData<Result<User>> getUpdateProfileResult = new MutableLiveData<>();
+    private final MutableLiveData<Result<UserDetail>> getUpdateProfileResult = new MutableLiveData<>();
 
     public LiveData<Result<User>> getLoginResult() {
         return loginResult;
@@ -32,19 +33,19 @@ public class UserViewModel extends ViewModel {
         userService.register(email, password).observeForever(registerResult::setValue);
     }
 
-    public LiveData<Result<User>> getUserResult() {
+    public LiveData<Result<UserDetail>> getUserResult() {
         return getUserResult;
     }
 
-    public void getUser(String id) {
-        userService.getUser(id).observeForever(getUserResult::setValue);
+    public void getUserDetail(String id) {
+        userService.getUserDetail(id).observeForever(getUserResult::setValue);
     }
 
-    public LiveData<Result<User>> getUpdateProfileResult() {
+    public LiveData<Result<UserDetail>> getUpdateProfileResult() {
         return getUpdateProfileResult;
     }
 
-    public void updateProfile(User user) {
+    public void updateProfile(UserDetail user) {
         userService.updateProfile(user).observeForever(getUpdateProfileResult::setValue);
     }
 

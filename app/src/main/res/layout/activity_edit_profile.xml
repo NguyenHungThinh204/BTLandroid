@@ -39,8 +39,7 @@
         </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include
-        layout="@layout/loading" />
+    <include layout="@layout/loading" />
 
     <!-- Nội dung có thể cuộn -->
     <androidx.core.widget.NestedScrollView
@@ -59,111 +58,115 @@
 
             <!-- Các trường dữ liệu -->
             <!-- Họ tên -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="Họ tên"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="16sp"/>
+            <!--            <TextView-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginBottom="8dp"-->
+            <!--                android:text="Họ tên"-->
+            <!--                android:textColor="@color/black"-->
+            <!--                android:textStyle="bold"-->
+            <!--                android:textSize="16sp"/>-->
 
-            <EditText
-                android:id="@+id/edtName"
-                android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:layout_marginBottom="16dp"
-                android:autofillHints="name"
-                android:background="@drawable/rounded_edit_text"
-                android:inputType="text"
-                android:paddingHorizontal="16dp"
-                android:textColor="@color/black" />
+            <!--            <EditText-->
+            <!--                android:id="@+id/edtName"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="42dp"-->
+            <!--                android:layout_marginBottom="16dp"-->
+            <!--                android:autofillHints="name"-->
+            <!--                android:background="@drawable/rounded_edit_text"-->
+            <!--                android:inputType="text"-->
+            <!--                android:paddingHorizontal="16dp"-->
+            <!--                android:textColor="@color/black" />-->
 
             <!-- Chức vụ -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="Chức vụ"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="16sp"/>
+            <!--            <TextView-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginBottom="8dp"-->
+            <!--                android:text="Chức vụ"-->
+            <!--                android:textColor="@color/black"-->
+            <!--                android:textStyle="bold"-->
+            <!--                android:textSize="16sp"/>-->
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:layout_marginBottom="16dp"
-                app:boxStrokeColor="@color/black"
-                android:background="@drawable/rounded_edit_text"
-                app:boxCornerRadiusTopStart="24dp"
-                app:boxCornerRadiusTopEnd="24dp"
-                app:boxCornerRadiusBottomStart="24dp"
-                app:boxCornerRadiusBottomEnd="24dp">
+            <!--            <com.google.android.material.textfield.TextInputLayout-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="42dp"-->
+            <!--                android:layout_marginBottom="16dp"-->
+            <!--                app:boxStrokeColor="@color/black"-->
+            <!--                android:background="@drawable/rounded_edit_text"-->
+            <!--                app:boxCornerRadiusTopStart="24dp"-->
+            <!--                app:boxCornerRadiusTopEnd="24dp"-->
+            <!--                app:boxCornerRadiusBottomStart="24dp"-->
+            <!--                app:boxCornerRadiusBottomEnd="24dp">-->
 
-                <AutoCompleteTextView
-                    android:id="@+id/edtPosition"
-                    android:layout_width="match_parent"
-                    android:layout_height="42dp"
-                    android:background="@android:color/transparent"
-                    android:paddingHorizontal="16dp"
-                    android:textColor="@color/black"
-                    android:inputType="none"
-                    android:focusable="false"
-                    android:drawableEnd="@drawable/keyboard_arrow_down_24dp" />
-            </com.google.android.material.textfield.TextInputLayout>
+            <!--                <AutoCompleteTextView-->
+            <!--                    android:id="@+id/edtPosition"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="42dp"-->
+            <!--                    android:background="@android:color/transparent"-->
+            <!--                    android:paddingHorizontal="16dp"-->
+            <!--                    android:textColor="@color/black"-->
+            <!--                    android:inputType="none"-->
+            <!--                    android:focusable="false"-->
+            <!--                    android:drawableEnd="@drawable/keyboard_arrow_down_24dp" />-->
+            <!--            </com.google.android.material.textfield.TextInputLayout>-->
 
 
             <!-- Lớp/ĐVCT -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="Lớp/ĐVCT"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="16sp"/>
+            <!--            <TextView-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginBottom="8dp"-->
+            <!--                android:text="Lớp/ĐVCT"-->
+            <!--                android:textColor="@color/black"-->
+            <!--                android:textStyle="bold"-->
+            <!--                android:textSize="16sp"/>-->
 
-            <EditText
-                android:id="@+id/edtDepartment"
-                android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:layout_marginBottom="16dp"
-                android:autofillHints="text"
-                android:background="@drawable/rounded_edit_text"
-                android:inputType="text"
-                android:paddingHorizontal="16dp"
-                android:textColor="@color/black" />
+            <!--            <EditText-->
+            <!--                android:id="@+id/edtDepartment"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="42dp"-->
+            <!--                android:layout_marginBottom="16dp"-->
+            <!--                android:autofillHints="text"-->
+            <!--                android:background="@drawable/rounded_edit_text"-->
+            <!--                android:inputType="text"-->
+            <!--                android:paddingHorizontal="16dp"-->
+            <!--                android:textColor="@color/black" />-->
 
             <!-- Kỹ năng -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="Kỹ năng có thể chia sẻ"
+                android:text="Kỹ năng"
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="16sp"/>
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/edtSkill"
                 android:layout_width="match_parent"
-                android:layout_height="42dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:autofillHints="name"
                 android:background="@drawable/rounded_edit_text"
-                android:inputType="text"
+                android:gravity="top|start"
+                android:inputType="textMultiLine"
+                android:maxLines="5"
+                android:minLines="3"
                 android:paddingHorizontal="16dp"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
             <!-- Môn học đang tìm kiếm -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="Kỹ năng có thể chia sẻ"
+                android:text="Môn học đang tìm"
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="16sp"/>
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/edtSubject"
@@ -174,17 +177,18 @@
                 android:background="@drawable/rounded_edit_text"
                 android:inputType="text"
                 android:paddingHorizontal="16dp"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
             <!-- Thông tin liên hệ -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="Kỹ năng có thể chia sẻ"
+                android:text="Liên hệ"
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="16sp"/>
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/edtContact"
@@ -195,7 +199,66 @@
                 android:background="@drawable/rounded_edit_text"
                 android:inputType="text"
                 android:paddingHorizontal="16dp"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Có thể trợ giúp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/radioStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioAvailable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="36dp"
+                    android:text="Sẵn sàng"
+                    android:textSize="16sp" />
+
+                <RadioButton
+                    android:id="@+id/radioNotAvailable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Không sẵn sàng"
+                    android:textSize="16sp" />
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Giới thiệu"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/edtBio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:autofillHints="name"
+                android:background="@drawable/rounded_edit_text"
+                android:gravity="top|start"
+                android:inputType="textMultiLine"
+                android:maxLines="24"
+                android:minLines="8"
+                android:paddingHorizontal="16dp"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
@@ -206,10 +269,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:background="@color/background"
+        android:gravity="center"
         android:orientation="horizontal"
         android:padding="16dp"
-        android:weightSum="5"
-        android:gravity="center">
+        android:weightSum="5">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnUpdate"

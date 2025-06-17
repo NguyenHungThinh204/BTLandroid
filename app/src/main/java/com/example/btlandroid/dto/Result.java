@@ -43,4 +43,12 @@ public class Result<T> {
     public static <T> Result<T> error(String error) {
         return new Result<>(null, error, false, false);
     }
+
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
+        this.data = data;
+    }
 }
