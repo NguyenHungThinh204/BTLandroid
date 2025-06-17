@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/nav_departments_contact"
+        android:id="@+id/navChat"
         android:icon="@drawable/chat_24dp"
         android:title="Chats" />
 
     <item
-        android:id="@+id/nav_staffs_contact"
+        android:id="@+id/navHome"
         android:icon="@drawable/home_24dp"
         android:title="Trang chủ" />
 
     <item
-        android:id="@+id/nav_students_contact"
+        android:id="@+id/navAccount"
         android:icon="@drawable/account_circle_24dp"
         android:title="Cá nhân" />
 
