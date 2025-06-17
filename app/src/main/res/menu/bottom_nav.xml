@@ -11,7 +11,7 @@
         android:title="Trang chủ" />
 
     <item
-        android:id="@+id/navAccount"
+        android:id="@+id/navProfile"
         android:icon="@drawable/account_circle_24dp"
         android:title="Cá nhân" />
 

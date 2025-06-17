@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/background"
     android:gravity="center"
     android:orientation="vertical"
@@ -26,6 +26,7 @@
         android:layout_marginBottom="8dp"
         android:text="@string/email"
         android:textColor="@color/black"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
     <EditText
@@ -35,7 +36,8 @@
         android:layout_marginBottom="16dp"
         android:autofillHints="emailAddress"
         android:background="@drawable/rounded_edit_text"
-        android:hint="username@gmail.com"
+        android:hint="user@gmail.com"
+        android:text="dev@gmail.com"
         android:inputType="textEmailAddress"
         android:paddingHorizontal="16dp"
         android:textColor="@color/black" />
@@ -47,6 +49,7 @@
         android:layout_marginBottom="8dp"
         android:text="@string/password"
         android:textColor="@color/black"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
     <!--  Mật khẩu  -->
@@ -58,6 +61,7 @@
         android:autofillHints="password"
         android:background="@drawable/rounded_edit_text"
         android:hint="**********"
+        android:text="123456"
         android:inputType="textPassword"
         android:paddingHorizontal="16dp"
         android:textColor="@color/black" />
@@ -70,7 +74,8 @@
         android:layout_marginBottom="20dp"
         android:gravity="end"
         android:text="@string/forgot_password"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        android:textSize="16sp" />
 
     <!-- Nút đăng nhập -->
     <com.google.android.material.button.MaterialButton
@@ -82,7 +87,8 @@
         android:textAllCaps="false"
         android:textColor="@android:color/white"
         app:backgroundTint="@color/red"
-        app:cornerRadius="100dp" />
+        app:cornerRadius="100dp"
+        android:textSize="16sp"/>
 
     <!-- Đăng ký -->
     <LinearLayout

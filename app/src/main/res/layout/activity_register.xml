@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/background"
     android:gravity="center"
     android:orientation="vertical"
@@ -26,6 +26,7 @@
         android:layout_marginBottom="8dp"
         android:text="@string/email"
         android:textColor="@color/black"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
     <EditText
@@ -47,6 +48,7 @@
         android:layout_marginBottom="8dp"
         android:text="@string/password"
         android:textColor="@color/black"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
     <!--  Mật khẩu  -->
@@ -69,6 +71,7 @@
         android:layout_marginBottom="8dp"
         android:text="Nhập lại mật khẩu"
         android:textColor="@color/black"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
     <!-- Nhập lại mật khẩu -->
@@ -93,6 +96,7 @@
         android:text="@string/register"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
+        android:textSize="16sp"
         app:backgroundTint="@color/red"
         app:cornerRadius="100dp" />
 
