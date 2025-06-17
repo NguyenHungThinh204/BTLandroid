@@ -1,6 +1,5 @@
 package com.example.btlandroid.ui.auth;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
