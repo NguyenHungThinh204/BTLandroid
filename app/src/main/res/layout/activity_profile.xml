@@ -39,17 +39,16 @@
         </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include
-        layout="@layout/loading" />
+    <include layout="@layout/loading" />
 
     <!-- Nội dung có thể cuộn -->
     <androidx.core.widget.NestedScrollView
         android:id="@+id/content"
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="80dp"
         android:padding="16dp"
+        android:visibility="gone"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
@@ -81,7 +80,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Họ tên: "
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvName"
@@ -103,7 +103,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Chức vụ: "
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/tvPosition"
@@ -125,7 +126,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Lớp/ĐVCT: "
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/tvDepartment"
@@ -146,8 +148,9 @@
                     android:id="@+id/lbSkill"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Kỹ năng có thể chia sẻ: "
-                    android:textSize="16sp" />
+                    android:text="Kỹ năng: "
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/tvSkill"
@@ -168,8 +171,9 @@
                     android:id="@+id/lbSubject"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Môn học đang tìm kiếm: "
-                    android:textSize="16sp" />
+                    android:text="Môn học đang tìm: "
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/tvSubject"
@@ -190,8 +194,9 @@
                     android:id="@+id/lbContact"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Thông tin liên hệ: "
-                    android:textSize="16sp" />
+                    android:text="Liên hệ: "
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/tvContact"
@@ -202,24 +207,47 @@
                     android:textSize="16sp" />
             </RelativeLayout>
 
-            <!-- Nhận xét -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingVertical="10dp">
 
                 <TextView
-                    android:id="@+id/lbNote"
+                    android:id="@+id/lbAvailable"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nhận xét: "
-                    android:textSize="16sp" />
+                    android:text="Có thể giúp đỡ: "
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
 
                 <TextView
-                    android:id="@+id/tvNote"
+                    android:id="@+id/tvAvailable"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toEndOf="@id/lbNote"
+                    android:layout_toEndOf="@id/lbAvailable"
+                    android:text="@string/place_holder"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+            <!-- Giới thiệu -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10dp">
+
+                <TextView
+                    android:id="@+id/lbBio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Giới thiệu: "
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tvBio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/lbBio"
                     android:text="@string/place_holder"
                     android:textSize="16sp" />
             </RelativeLayout>

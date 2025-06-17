@@ -1,11 +1,17 @@
 package com.example.btlandroid.models;
 
-public class Department {
+import java.io.Serializable;
+
+public class Department implements Serializable {
     private String id;
     private String name;
     private String desc;
 
     public Department() {
+    }
+
+    public Department(String id) {
+        this.id = id;
     }
 
     public Department(String desc, String id, String name) {

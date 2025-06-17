@@ -1,41 +1,34 @@
 package com.example.btlandroid.services.department;
 
 import com.example.btlandroid.models.Department;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
+import org.apache.commons.lang3.StringUtils;
 
 public class DepartmentService {
     public interface DepartmentCallback {
-        void onSuccess(List<Department> departments);
+        void onSuccess(Department department);
 
         void onFailure(Exception e);
     }
 
-    public void getDepartments(List<String> ids, DepartmentCallback callback) {
+    public void getDepartment(String id, DepartmentCallback callback) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        List<Department> departments = new ArrayList<>();
-        AtomicInteger counter = new AtomicInteger(0);
 
-        if (ids == null || ids.isEmpty()) {
-            callback.onSuccess(departments);
+        if (StringUtils.isBlank(id)) {
+            callback.onSuccess(null);
             return;
         }
 
         db.collection("departments")
-                .whereIn("id", ids)
+                .document(id)
                 .get()
-                .addOnSuccessListener(queryDocumentSnapshots -> {
-                    for (DocumentSnapshot document : queryDocumentSnapshots.getDocuments()) {
-                        Department department = document.toObject(Department.class);
-                        departments.add(department);
-                        counter.incrementAndGet();
-                        if (counter.get() == ids.size()) {
-                            callback.onSuccess(departments);
-                        }
+                .addOnSuccessListener(documentSnapshot -> {
+                    if (documentSnapshot.exists()) {
+                        Department department = documentSnapshot.toObject(Department.class);
+                        callback.onSuccess(department);
+                    } else {
+                        callback.onSuccess(null);
                     }
                 })
                 .addOnFailureListener(callback::onFailure);

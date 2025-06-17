@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.bumptech.glide.Glide;
 import com.example.btlandroid.R;
+import com.example.btlandroid.dto.UserDetail;
 import com.example.btlandroid.models.User;
 import com.example.btlandroid.ui.BaseActivity;
 import com.example.btlandroid.ui.auth.LoginActivity;
@@ -30,8 +31,8 @@ public class ProfileActivity extends BaseActivity {
     private NestedScrollView content;
     private ImageView loading;
     private ShapeableImageView imgAvatar;
-    private TextView tvName, tvPosition, tvDepartment, tvSkill, tvSubject, tvContact;
-    private User currentUser;
+    private TextView tvName, tvPosition, tvDepartment, tvSkill, tvSubject, tvContact, tvAvailable, tvBio;
+    private UserDetail currentUser;
     private ImageButton btnBack;
     private MaterialButton btnEdit, btnLogout;
     private ActivityResultLauncher<Intent> editProfileLauncher;
@@ -47,7 +48,7 @@ public class ProfileActivity extends BaseActivity {
                 new ActivityResultContracts.StartActivityForResult(),
                 result -> {
                     if (result.getResultCode() == RESULT_OK && result.getData() != null) {
-                        User updatedUser = (User) result.getData().getSerializableExtra("updated_user");
+                        UserDetail updatedUser = (UserDetail) result.getData().getSerializableExtra("updated_user");
                         if (updatedUser != null) {
                             currentUser = updatedUser;
                             fillData();
@@ -56,7 +57,7 @@ public class ProfileActivity extends BaseActivity {
                 }
         );
 
-        userViewModel.getUser(SharedPrefUtil.getString("userId", null));
+        userViewModel.getUserDetail(SharedPrefUtil.getString("userId", null));
 
         userViewModel.getUserResult().observe(this, liveData -> {
             if (liveData.loading) {
@@ -89,17 +90,25 @@ public class ProfileActivity extends BaseActivity {
         if (!StringUtils.isBlank(currentUser.getPosition())) {
             tvPosition.setText(currentUser.getPosition());
         }
-        if (!StringUtils.isBlank(currentUser.getDepartmentId())) {
-            tvDepartment.setText(currentUser.getDepartmentId());
+        if (!StringUtils.isBlank(currentUser.getDepartment().getName())) {
+            tvDepartment.setText(currentUser.getDepartment().getName());
         }
-        if (!StringUtils.isBlank(currentUser.getBio())) {
-            tvSkill.setText(currentUser.getBio());
+        if (!StringUtils.isBlank(currentUser.getSubject())) {
+            tvSubject.setText(currentUser.getSubject());
         }
         if (!StringUtils.isBlank(currentUser.getPhone())) {
-            tvSubject.setText(currentUser.getPhone());
+            tvContact.setText(currentUser.getPhone());
         }
         if (!StringUtils.isBlank(currentUser.getSkill())) {
             tvSkill.setText(currentUser.getSkill());
+        }
+        if (currentUser.isTutorAvailable()) {
+            tvAvailable.setText("Sẵn sàng");
+        } else {
+            tvAvailable.setText("Không sẵn sàng");
+        }
+        if (!StringUtils.isBlank(currentUser.getBio())) {
+            tvBio.setText(currentUser.getBio());
         }
     }
 
@@ -137,6 +146,8 @@ public class ProfileActivity extends BaseActivity {
         btnBack = findViewById(R.id.btnBack);
         btnEdit = findViewById(R.id.btnEdit);
         btnLogout = findViewById(R.id.btnLogout);
+        tvBio = findViewById(R.id.tvBio);
+        tvAvailable = findViewById(R.id.tvAvailable);
     }
 
     @Override

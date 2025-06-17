@@ -1,10 +1,11 @@
-package com.example.btlandroid.models;
+package com.example.btlandroid.dto;
 
-import com.example.btlandroid.dto.UserDetail;
+import com.example.btlandroid.models.Department;
+import com.example.btlandroid.models.User;
 
 import java.io.Serializable;
 
-public class User implements Serializable {
+public class UserDetail implements Serializable {
     private String id;
     private String name;
     private String email;
@@ -14,37 +15,33 @@ public class User implements Serializable {
     private String bio; //Giới thiệu
     private boolean isTutorAvailable = false;
     private String position;
-    private String departmentId;
+    private Department department;
     private String skill;
     private String subject;
 
-    public User() {
+    public UserDetail() {
     }
 
-    public User(UserDetail detail) {
-        this.id = detail.getId();
-        this.name = detail.getName();
-        this.email = detail.getEmail();
-        this.avtURL = detail.getAvtURL();
-        this.phone = detail.getPhone();
-        this.avgRating = detail.getAvgRating();
-        this.bio = detail.getBio();
-        this.isTutorAvailable = detail.isTutorAvailable();
-        this.position = detail.getPosition();
-        this.departmentId = detail.getDepartment().getId();
-        this.skill = detail.getSkill();
-        this.subject = detail.getSubject();
+    public UserDetail(User user) {
+        this.id = user.getId();
+        this.name = user.getName();
+        this.email = user.getEmail();
+        this.avtURL = user.getAvtURL();
+        this.phone = user.getPhone();
+        this.avgRating = user.getAvgRating();
+        this.bio = user.getBio();
+        this.isTutorAvailable = user.isTutorAvailable();
+        this.department = new Department(user.getDepartmentId());
+        this.skill = user.getSkill();
+        this.position = user.getPosition();
+        this.subject = user.getSubject();
     }
 
-    public User(String id) {
-        this.id = id;
-    }
-
-    public User(float avgRating, String avtURL, String bio, String departmentId, String email, String id, boolean isTutorAvailable, String name, String phone, String position, String skill, String subject) {
+    public UserDetail(float avgRating, String avtURL, String bio, Department department, String email, String id, boolean isTutorAvailable, String name, String phone, String position, String skill, String subject) {
         this.avgRating = avgRating;
         this.avtURL = avtURL;
         this.bio = bio;
-        this.departmentId = departmentId;
+        this.department = department;
         this.email = email;
         this.id = id;
         this.isTutorAvailable = isTutorAvailable;
@@ -79,12 +76,12 @@ public class User implements Serializable {
         this.bio = bio;
     }
 
-    public String getDepartmentId() {
-        return departmentId;
+    public Department getDepartment() {
+        return department;
     }
 
-    public void setDepartmentId(String departmentId) {
-        this.departmentId = departmentId;
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
     public String getEmail() {
