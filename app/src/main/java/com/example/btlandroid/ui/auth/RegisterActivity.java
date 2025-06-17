@@ -1,5 +1,6 @@
 package com.example.btlandroid.ui.auth;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
@@ -10,67 +11,69 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.btlandroid.R;
-import com.example.btlandroid.ui.main.MainActivity;
 import com.example.btlandroid.viewmodel.UserViewModel;
 import com.google.android.material.button.MaterialButton;
 
-public class LoginActivity extends AppCompatActivity {
-    private EditText edtEmail, edtPassword;
-    private MaterialButton btnLogin;
-    private TextView tvRegister, btnForgotPassword;
+public class RegisterActivity extends AppCompatActivity {
+    private EditText edtEmail, edtPassword, edtConfirmPassword;
+    private MaterialButton btnRegister;
+    private TextView tvLogin;
     private UserViewModel userViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_register);
         refToViews();
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
         setListener();
 
-        userViewModel.getLoginResult().observe(this, liveData -> {
+        userViewModel.getRegisterResult().observe(this, liveData -> {
             if (liveData.loading) {
-                btnLogin.setEnabled(false);
-                btnLogin.setText("Đang đăng nhập...");
+                btnRegister.setEnabled(false);
+                btnRegister.setText("Đang đăng ký...");
                 return;
             }
             Toast.makeText(this, liveData.message, Toast.LENGTH_SHORT).show();
             if (liveData.isSuccess) {
-                startActivity(new Intent(this, MainActivity.class));
+                login();
                 finish();
             }
         });
     }
 
     private void setListener() {
-        btnLogin.setOnClickListener(v -> login());
-        tvRegister.setOnClickListener(v -> register());
-        btnForgotPassword.setOnClickListener(v -> forgotPassword());
-    }
-
-    private void register() {
-        startActivity(new Intent(this, RegisterActivity.class));
-    }
-
-    private void forgotPassword() {
-//        startActivity(new Intent(this, ForgotPasswordActivity.class));
+        btnRegister.setOnClickListener(v -> register());
+        tvLogin.setOnClickListener(v -> login());
     }
 
     private void login() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(intent);
+    }
+
+    private void register() {
         String email = edtEmail.getText().toString().strip();
         String password = edtPassword.getText().toString().strip();
-        if (email.isEmpty() || password.isEmpty()) {
+        String confirmPassword = edtConfirmPassword.getText().toString().strip();
+        if (email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
             Toast.makeText(this, "Email hoặc mật khẩu không được để trống!", Toast.LENGTH_SHORT).show();
             return;
         }
-        userViewModel.login(email, password);
+        if (!password.equals(confirmPassword)) {
+            Toast.makeText(this, "Mật khẩu không khớp!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        // Gọi service đăng ký
+        userViewModel.register(email, password);
     }
 
     private void refToViews() {
         edtEmail = findViewById(R.id.edtEmail);
         edtPassword = findViewById(R.id.edtPassword);
-        btnLogin = findViewById(R.id.btnLogin);
-        tvRegister = findViewById(R.id.tvRegister);
-        btnForgotPassword = findViewById(R.id.btnForgotPassword);
+        edtConfirmPassword = findViewById(R.id.edtConfirmPassword);
+        btnRegister = findViewById(R.id.btnRegister);
+        tvLogin = findViewById(R.id.tvLogin);
     }
 }

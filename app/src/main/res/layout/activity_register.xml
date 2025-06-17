@@ -8,13 +8,13 @@
     android:gravity="center"
     android:orientation="vertical"
     android:padding="24dp"
-    tools:context=".ui.auth.LoginActivity">
+    tools:context=".ui.auth.RegisterActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
-        android:text="@string/login"
+        android:text="@string/register"
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold" />
@@ -62,23 +62,35 @@
         android:paddingHorizontal="16dp"
         android:textColor="@color/black" />
 
-    <!-- Quên mật khẩu -->
+    <!-- Nhập lại mật khẩu -->
     <TextView
-        android:id="@+id/btnForgotPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:gravity="end"
-        android:text="@string/forgot_password"
+        android:layout_marginBottom="8dp"
+        android:text="Nhập lại mật khẩu"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+    <!-- Nhập lại mật khẩu -->
+    <EditText
+        android:id="@+id/edtConfirmPassword"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_marginBottom="16dp"
+        android:autofillHints="password"
+        android:background="@drawable/rounded_edit_text"
+        android:hint="**********"
+        android:inputType="textPassword"
+        android:paddingHorizontal="16dp"
         android:textColor="@color/black" />
 
-    <!-- Nút đăng nhập -->
+    <!-- Nút đăng ký -->
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnRegister"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_marginBottom="14dp"
-        android:text="@string/login"
+        android:text="@string/register"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
         app:backgroundTint="@color/red"
@@ -95,15 +107,15 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Bạn chưa có tài khoản? "
+            android:text="Bạn đã có tài khoản? "
             android:textColor="@color/black"
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/tvRegister"
+            android:id="@+id/tvLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/register"
+            android:text="@string/login"
             android:textColor="@color/red"
             android:textSize="16sp"
             android:textStyle="bold" />
