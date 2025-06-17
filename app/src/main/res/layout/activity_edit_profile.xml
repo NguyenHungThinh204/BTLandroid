@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".ui.profile.EditProfileActivity">
+
+    <!-- AppBar -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background"
+        android:theme="@style/Theme.Material3.Light.NoActionBar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription=""
+                android:src="@drawable/arrow_back_24dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="Cập nhật"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Nội dung có thể cuộn -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="80dp"
+        android:padding="16dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <!-- Các trường dữ liệu -->
+            <!-- Họ tên -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Họ tên"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="16sp"/>
+
+            <EditText
+                android:id="@+id/edtName"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginBottom="16dp"
+                android:autofillHints="name"
+                android:background="@drawable/rounded_edit_text"
+                android:inputType="text"
+                android:paddingHorizontal="16dp"
+                android:textColor="@color/black" />
+
+            <!-- Chức vụ -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Chức vụ"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="16sp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginBottom="16dp"
+                app:boxStrokeColor="@color/black"
+                android:background="@drawable/rounded_edit_text"
+                app:boxCornerRadiusTopStart="24dp"
+                app:boxCornerRadiusTopEnd="24dp"
+                app:boxCornerRadiusBottomStart="24dp"
+                app:boxCornerRadiusBottomEnd="24dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/edtPosition"
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:background="@android:color/transparent"
+                    android:paddingHorizontal="16dp"
+                    android:textColor="@color/black"
+                    android:inputType="none"
+                    android:focusable="false"
+                    android:drawableEnd="@drawable/keyboard_arrow_down_24dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <!-- Lớp/ĐVCT -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Lớp/ĐVCT"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="16sp"/>
+
+            <EditText
+                android:id="@+id/edtClass"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginBottom="16dp"
+                android:autofillHints="text"
+                android:background="@drawable/rounded_edit_text"
+                android:inputType="text"
+                android:paddingHorizontal="16dp"
+                android:textColor="@color/black" />
+
+            <!-- Kỹ năng -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Kỹ năng có thể chia sẻ"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="16sp"/>
+
+            <EditText
+                android:id="@+id/edtSkill"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginBottom="16dp"
+                android:autofillHints="name"
+                android:background="@drawable/rounded_edit_text"
+                android:inputType="text"
+                android:paddingHorizontal="16dp"
+                android:textColor="@color/black" />
+
+            <!-- Môn học đang tìm kiếm -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Kỹ năng có thể chia sẻ"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="16sp"/>
+
+            <EditText
+                android:id="@+id/edtSubject"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginBottom="16dp"
+                android:autofillHints="name"
+                android:background="@drawable/rounded_edit_text"
+                android:inputType="text"
+                android:paddingHorizontal="16dp"
+                android:textColor="@color/black" />
+
+            <!-- Thông tin liên hệ -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Kỹ năng có thể chia sẻ"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="16sp"/>
+
+            <EditText
+                android:id="@+id/edtContact"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginBottom="16dp"
+                android:autofillHints="name"
+                android:background="@drawable/rounded_edit_text"
+                android:inputType="text"
+                android:paddingHorizontal="16dp"
+                android:textColor="@color/black" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Nút cố định ở đáy -->
+    <LinearLayout
+        android:id="@+id/fixedButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/background"
+        android:elevation="4dp"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:weightSum="5"
+        android:gravity="center">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnUpdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/red"
+            android:text="Cập nhật"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
