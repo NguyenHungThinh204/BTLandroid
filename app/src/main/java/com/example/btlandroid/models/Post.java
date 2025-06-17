@@ -4,9 +4,10 @@ import java.util.List;
 
 public class Post {
     private String userId;
+    private String name;
     private String title;
     private String description;
-    private List<String> subject;
+    private String subject;
     private String time;
     private String fee;
     private String supportType;
@@ -16,9 +17,10 @@ public class Post {
         // Empty constructor for Firebase
     }
 
-    public Post(String userId, String title, String description, List<String> subject,
+    public Post(String userId, String name, String title, String description, String subject,
                 String time, String fee, String supportType, String postType) {
         this.userId = userId;
+        this.name = name;
         this.title = title;
         this.description = description;
         this.subject = subject;
@@ -29,6 +31,23 @@ public class Post {
     }
 
     // Getters and Setters
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPostType() {
+        return postType;
+    }
+
+    public void setPostType(String postType) {
+        this.postType = postType;
+    }
+
     public String getUserId() {
         return userId;
     }
@@ -53,11 +72,11 @@ public class Post {
         this.description = description;
     }
 
-    public List<String> getSubject() {
+    public String getSubject() {
         return subject;
     }
 
-    public void setSubject(List<String> subject) {
+    public void setSubject(String subject) {
         this.subject = subject;
     }
 
