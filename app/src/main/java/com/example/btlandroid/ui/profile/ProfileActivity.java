@@ -1,8 +1,11 @@
 package com.example.btlandroid.ui.profile;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,7 +19,6 @@ import androidx.lifecycle.ViewModelProvider;
 import com.bumptech.glide.Glide;
 import com.example.btlandroid.R;
 import com.example.btlandroid.dto.UserDetail;
-import com.example.btlandroid.models.User;
 import com.example.btlandroid.ui.BaseActivity;
 import com.example.btlandroid.ui.auth.LoginActivity;
 import com.example.btlandroid.utils.SharedPrefUtil;
@@ -118,19 +120,56 @@ public class ProfileActivity extends BaseActivity {
             finish();
         });
 
-        btnLogout.setOnClickListener(v -> {
-            userViewModel.logout();
-            Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-            finish();
-        });
+        btnLogout.setOnClickListener(v -> showLogoutPopup());
 
         btnEdit.setOnClickListener(v -> {
             Intent intent = new Intent(ProfileActivity.this, EditProfileActivity.class);
             intent.putExtra("user", currentUser);
             editProfileLauncher.launch(intent);
         });
+    }
+
+    private void showLogoutPopup() {
+        // Inflate layout popup_logout.xml
+        View popupView = LayoutInflater.from(this).inflate(R.layout.popup_logout, null);
+
+        // Tạo dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setView(popupView);
+
+        AlertDialog dialog = builder.create();
+
+        // Giao diện popup giữa màn hình và bo góc đẹp
+        if (dialog.getWindow() != null) {
+            dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+            dialog.getWindow().setLayout(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+            );
+        }
+
+        // Gán sự kiện cho nút "Có" và "Không"
+        MaterialButton btnYes = popupView.findViewById(R.id.btnYes);
+        MaterialButton btnNo = popupView.findViewById(R.id.btnNo);
+
+        btnYes.setOnClickListener(v -> {
+            logout();
+            dialog.dismiss();
+        });
+
+        btnNo.setOnClickListener(v -> {
+            dialog.dismiss();
+        });
+
+        dialog.show();
+    }
+
+    private void logout() {
+        userViewModel.logout();
+        Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
     }
 
     private void refToViews() {
