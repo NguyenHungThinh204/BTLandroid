@@ -1,5 +1,6 @@
 package com.example.btlandroid.ui.profile;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -7,6 +8,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.core.widget.NestedScrollView;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -14,8 +17,10 @@ import com.bumptech.glide.Glide;
 import com.example.btlandroid.R;
 import com.example.btlandroid.models.User;
 import com.example.btlandroid.ui.BaseActivity;
+import com.example.btlandroid.ui.auth.LoginActivity;
 import com.example.btlandroid.utils.SharedPrefUtil;
 import com.example.btlandroid.viewmodel.UserViewModel;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.imageview.ShapeableImageView;
 
 import org.apache.commons.lang3.StringUtils;
@@ -28,6 +33,8 @@ public class ProfileActivity extends BaseActivity {
     private TextView tvName, tvPosition, tvDepartment, tvSkill, tvSubject, tvContact;
     private User currentUser;
     private ImageButton btnBack;
+    private MaterialButton btnEdit, btnLogout;
+    private ActivityResultLauncher<Intent> editProfileLauncher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +43,25 @@ public class ProfileActivity extends BaseActivity {
         setContentView(R.layout.activity_profile);
         refToViews();
 
+        editProfileLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                        User updatedUser = (User) result.getData().getSerializableExtra("updated_user");
+                        if (updatedUser != null) {
+                            currentUser = updatedUser;
+                            fillData();
+                        }
+                    }
+                }
+        );
+
         userViewModel.getUser(SharedPrefUtil.getString("userId", null));
 
         userViewModel.getUserResult().observe(this, liveData -> {
             if (liveData.loading) {
                 content.setVisibility(View.GONE);
+                loading.setVisibility(View.VISIBLE);
                 return;
             }
             if (liveData.isSuccess) {
@@ -84,6 +105,20 @@ public class ProfileActivity extends BaseActivity {
             setResult(RESULT_OK);
             finish();
         });
+
+        btnLogout.setOnClickListener(v -> {
+            userViewModel.logout();
+            Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
+        });
+
+        btnEdit.setOnClickListener(v -> {
+            Intent intent = new Intent(ProfileActivity.this, EditProfileActivity.class);
+            intent.putExtra("user", currentUser);
+            editProfileLauncher.launch(intent);
+        });
     }
 
     private void refToViews() {
@@ -97,6 +132,8 @@ public class ProfileActivity extends BaseActivity {
         tvContact = findViewById(R.id.tvContact);
         imgAvatar = findViewById(R.id.imgAvatar);
         btnBack = findViewById(R.id.btnBack);
+        btnEdit = findViewById(R.id.btnEdit);
+        btnLogout = findViewById(R.id.btnLogout);
     }
 
     @Override

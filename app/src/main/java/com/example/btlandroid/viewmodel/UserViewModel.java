@@ -14,6 +14,8 @@ public class UserViewModel extends ViewModel {
     private final MutableLiveData<Result<User>> registerResult = new MutableLiveData<>();
     private final MutableLiveData<Result<User>> getUserResult = new MutableLiveData<>();
 
+    private final MutableLiveData<Result<User>> getUpdateProfileResult = new MutableLiveData<>();
+
     public LiveData<Result<User>> getLoginResult() {
         return loginResult;
     }
@@ -36,5 +38,17 @@ public class UserViewModel extends ViewModel {
 
     public void getUser(String id) {
         userService.getUser(id).observeForever(getUserResult::setValue);
+    }
+
+    public LiveData<Result<User>> getUpdateProfileResult() {
+        return getUpdateProfileResult;
+    }
+
+    public void updateProfile(User user) {
+        userService.updateProfile(user).observeForever(getUpdateProfileResult::setValue);
+    }
+
+    public void logout() {
+        userService.logout();
     }
 }

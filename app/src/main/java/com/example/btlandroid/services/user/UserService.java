@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.btlandroid.dto.Result;
 import com.example.btlandroid.models.User;
+import com.example.btlandroid.utils.SharedPrefUtil;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
@@ -69,6 +70,11 @@ public class UserService {
         return liveData;
     }
 
+    public void logout() {
+        FirebaseAuth.getInstance().signOut();
+        SharedPrefUtil.clear();
+    }
+
     public LiveData<Result<User>> getUser(String id) {
         MutableLiveData<Result<User>> liveData = new MutableLiveData<>();
 
@@ -93,6 +99,30 @@ public class UserService {
                 })
                 .addOnFailureListener(e -> {
                     liveData.setValue(Result.error("Lỗi tải dữ liệu: " + e.getMessage()));
+                });
+
+        return liveData;
+    }
+
+    public LiveData<Result<User>> updateProfile(User user) {
+        MutableLiveData<Result<User>> liveData = new MutableLiveData<>();
+
+        if (user == null || user.getId() == null) {
+            liveData.setValue(Result.error("Thông tin người dùng không hợp lệ."));
+            return liveData;
+        }
+
+        liveData.setValue(Result.loading());
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("users")
+                .document(user.getId())
+                .set(user)
+                .addOnSuccessListener(unused -> {
+                    liveData.setValue(Result.success(user, "Cập nhật thành công!"));
+                })
+                .addOnFailureListener(e -> {
+                    liveData.setValue(Result.error("Cập nhật thất bại: " + e.getMessage()));
                 });
 
         return liveData;
