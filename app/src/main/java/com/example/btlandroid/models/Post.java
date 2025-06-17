@@ -2,25 +2,29 @@ package com.example.btlandroid.models;
 
 import java.util.List;
 
-public class Post {
-    private String userId;
-    private String name;
-    private String title;
-    private String description;
-    private String subject;
-    private String time;
-    private String fee;
-    private String supportType;
-    private String postType;
+public class Post implements java.io.Serializable {
+    private String id; // id củ bảng post
+    private String userId; // id của user lưu trong bảng post trong db
+    private String name; // nối bảng user với post rồi lấy trường name của user
+    private String avtURL; // nối bảng user với post rồi lấy trường name của user
+    private String title; // title bài post
+    private String description; // mô tả chi tiết bài viết
+    private String subject; // môn học, kỹ năng, chuyên môn ...
+    private String time; // là create at, không để người dùng nhập mà code tự động tạo để hiển thị
+    private String fee; // budget của người cần giúp đỡ hoặc mức mong muốn của người offer
+    private String supportType; // online, offline, zoom, meet ....
+    private String postType; // need hoặc offer để phân biệt người cần giúp và người giúp đỡ
 
     public Post() {
         // Empty constructor for Firebase
     }
 
-    public Post(String userId, String name, String title, String description, String subject,
+    public Post(String id, String userId, String name, String avtURL, String title, String description, String subject,
                 String time, String fee, String supportType, String postType) {
+        this.id = id;
         this.userId = userId;
         this.name = name;
+        this.avtURL = avtURL;
         this.title = title;
         this.description = description;
         this.subject = subject;
@@ -31,6 +35,22 @@ public class Post {
     }
 
     // Getters and Setters
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getAvtURL() {
+        return avtURL;
+    }
+
+    public void setAvtURL(String avtUrl) {
+        this.avtURL = avtUrl;
+    }
 
     public String getName() {
         return name;

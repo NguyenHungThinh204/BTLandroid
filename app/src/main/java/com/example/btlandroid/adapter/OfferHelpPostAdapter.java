@@ -9,6 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.btlandroid.R;
 import com.example.btlandroid.models.Post;
+import com.example.btlandroid.ui.PostDetail.PostDetailActivity;
+
 import java.util.List;
 
 public class OfferHelpPostAdapter extends RecyclerView.Adapter<OfferHelpPostAdapter.ViewHolder> {
@@ -31,7 +33,7 @@ public class OfferHelpPostAdapter extends RecyclerView.Adapter<OfferHelpPostAdap
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Post post = postList.get(position);
 
-        holder.tvUserName.setText(post.getUserId());
+        holder.tvUserName.setText(post.getName());
         holder.tvTitle.setText(post.getTitle());
         holder.tvDescription.setText(post.getDescription());
         holder.tvFee.setText(post.getFee());
@@ -43,6 +45,10 @@ public class OfferHelpPostAdapter extends RecyclerView.Adapter<OfferHelpPostAdap
             String subjects = String.join(", ", post.getSubject());
             holder.tvSubjects.setText(subjects);
         }
+
+        holder.itemView.setOnClickListener(v -> {
+            PostDetailActivity.start(context, post);
+        });
     }
 
     @Override

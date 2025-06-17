@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.btlandroid.R;
 import com.example.btlandroid.models.Post;
+import com.example.btlandroid.ui.PostDetail.PostDetailActivity;
+
 import java.util.List;
 
 public class PostGridAdapter extends RecyclerView.Adapter<PostGridAdapter.ViewHolder> {
@@ -43,6 +45,10 @@ public class PostGridAdapter extends RecyclerView.Adapter<PostGridAdapter.ViewHo
 //            String subjects = String.join(", ", post.getSubject());
 //            holder.tvSubjects.setText(subjects);
 //        }
+
+        holder.itemView.setOnClickListener(v -> {
+            PostDetailActivity.start(context, post);
+        });
     }
 
     @Override
