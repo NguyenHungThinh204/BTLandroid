@@ -41,7 +41,7 @@ public class MainActivity extends BaseActivity {
                     if (result.getResultCode() == RESULT_OK) {
                         // Người dùng nhấn back từ ProfileActivity
                         loadFragmentById(R.id.navChat);
-                        binding.bottomNav.setSelectedItemId(R.id.navChat);
+                        binding.bottomNav.setSelectedItemId(R.id.navHome);
                     }
                 }
         );
