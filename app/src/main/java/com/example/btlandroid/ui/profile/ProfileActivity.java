@@ -139,7 +139,6 @@ public class ProfileActivity extends BaseActivity {
 
         AlertDialog dialog = builder.create();
 
-        // Giao diện popup giữa màn hình và bo góc đẹp
         if (dialog.getWindow() != null) {
             dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
             dialog.getWindow().setLayout(
