@@ -10,6 +10,7 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class UserService {
     public LiveData<Result<User>> register(String email, String password) {
@@ -46,7 +47,11 @@ public class UserService {
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         FirebaseUser user = mAuth.getCurrentUser();
-                        liveData.setValue(Result.success(new User()));
+                        if (user == null) {
+                            liveData.setValue(Result.error("Đăng nhập thất bại!"));
+                            return;
+                        }
+                        liveData.setValue(Result.success(new User(user.getUid())));
                     } else {
                         Exception e = task.getException();
                         String msg;
@@ -59,6 +64,35 @@ public class UserService {
                         }
                         liveData.setValue(Result.error(msg));
                     }
+                });
+
+        return liveData;
+    }
+
+    public LiveData<Result<User>> getUser(String id) {
+        MutableLiveData<Result<User>> liveData = new MutableLiveData<>();
+
+        if (id == null) {
+            liveData.setValue(Result.error("Đã có lỗi xảy ra. Vui lòng đăng nhập lại!"));
+            return liveData;
+        }
+
+        liveData.setValue(Result.loading());
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("users")
+                .document(id)
+                .get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    if (documentSnapshot.exists()) {
+                        User user = documentSnapshot.toObject(User.class);
+                        liveData.setValue(Result.success(user));
+                    } else {
+                        liveData.setValue(Result.error("Đã có lỗi xảy ra!"));
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    liveData.setValue(Result.error("Lỗi tải dữ liệu: " + e.getMessage()));
                 });
 
         return liveData;

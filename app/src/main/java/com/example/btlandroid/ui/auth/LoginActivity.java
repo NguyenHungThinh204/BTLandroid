@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.btlandroid.R;
 import com.example.btlandroid.ui.main.MainActivity;
+import com.example.btlandroid.utils.SharedPrefUtil;
 import com.example.btlandroid.viewmodel.UserViewModel;
 import com.google.android.material.button.MaterialButton;
 
@@ -34,10 +35,14 @@ public class LoginActivity extends AppCompatActivity {
                 btnLogin.setText("Đang đăng nhập...");
                 return;
             }
-            Toast.makeText(this, liveData.message, Toast.LENGTH_SHORT).show();
             if (liveData.isSuccess) {
+                SharedPrefUtil.putString("userId", liveData.data.getId());
                 startActivity(new Intent(this, MainActivity.class));
                 finish();
+            } else {
+                Toast.makeText(this, liveData.message, Toast.LENGTH_SHORT).show();
+                btnLogin.setEnabled(true);
+                btnLogin.setText("Đăng nhập");
             }
         });
     }

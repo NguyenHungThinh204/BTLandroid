@@ -13,4 +13,5 @@
     <color name="support_type_color">#4CAF50</color>
     <color name="search_background">#FFB6C1</color>
     <color name="primary_color">#FF6B6B</color>
+    <color name="gray">#FFC4C4C4</color>
 </resources>
