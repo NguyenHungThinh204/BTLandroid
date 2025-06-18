@@ -1,4 +1,4 @@
-package com.example.btlandroid;
+package com.example.btlandroid.ui.auth;
 
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -12,8 +12,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.btlandroid.R;
 import com.example.btlandroid.services.email.EmailService;
-import com.example.btlandroid.ui.auth.LoginActivity;
 import com.google.android.material.button.MaterialButton;
 
 import org.apache.commons.lang3.StringUtils;

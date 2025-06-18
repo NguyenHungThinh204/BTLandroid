@@ -9,7 +9,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.btlandroid.ForgotPasswordActivity;
 import com.example.btlandroid.R;
 import com.example.btlandroid.ui.main.MainActivity;
 import com.example.btlandroid.utils.SharedPrefUtil;

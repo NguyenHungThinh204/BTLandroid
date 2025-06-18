@@ -14,7 +14,7 @@
         android:theme="@style/Theme.Btlandroid"
         tools:targetApi="31">
         <activity
-            android:name=".ForgotPasswordActivity"
+            android:name=".ui.auth.ForgotPasswordActivity"
             android:exported="false" />
         <activity
             android:name=".ErrorActivity"
