@@ -10,4 +10,5 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="msg_sent_email">Chúng tôi sẽ gửi cho bạn một email thông báo rằng bạn đang thực hiện lấy lại mật khẩu, hãy kiểm tra hộp thư và nhấp vào đường link để đặt lại mật khẩu. Sau khi hoàn tất, bạn có thể đăng nhập với mật khẩu mới.\nTrân trọng!</string>
+    <string name="new_post">Bài đăng mới</string>
 </resources>

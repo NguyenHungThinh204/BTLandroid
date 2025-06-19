@@ -1,6 +1,7 @@
 package com.example.btlandroid.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,8 @@ import com.example.btlandroid.adapter.OfferHelpPostAdapter;
 import com.example.btlandroid.adapter.PostGridAdapter;
 import com.example.btlandroid.component.SearchActionsComponent;
 import com.example.btlandroid.models.Post;
+import com.example.btlandroid.ui.post.NewPostActivity;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -137,7 +140,7 @@ public class HomeFragmentUpdated extends Fragment implements SearchActionsCompon
 
     @Override
     public void onAddPostClick() {
-        // TODO: Navigate to add post screen
+        startActivity(new Intent(getContext(), NewPostActivity.class));
     }
 
     @Override
