@@ -1,7 +1,5 @@
 package com.example.btlandroid.models;
 
-import java.util.List;
-
 public class Post implements java.io.Serializable {
     private String id; // id củ bảng post
     private String userId; // id của user lưu trong bảng post trong db

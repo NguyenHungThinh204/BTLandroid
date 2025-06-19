@@ -51,4 +51,5 @@ dependencies {
     implementation (libs.github.glide)
     annotationProcessor (libs.compiler)
     implementation (libs.commons.lang3)
+    implementation(libs.gson)
 }

@@ -31,14 +31,15 @@ public class LoginActivity extends AppCompatActivity {
 
         userViewModel.getLoginResult().observe(this, liveData -> {
             if (liveData.loading) {
-                btnLogin.setEnabled(false);
                 btnLogin.setText("Đang đăng nhập...");
+                btnLogin.setEnabled(false);
                 return;
             }
             if (liveData.isSuccess) {
                 SharedPrefUtil.putString("userId", liveData.data.getId());
-                startActivity(new Intent(this, MainActivity.class));
-                finish();
+                Intent intent = new Intent(this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
             } else {
                 Toast.makeText(this, liveData.message, Toast.LENGTH_SHORT).show();
                 btnLogin.setEnabled(true);

@@ -20,18 +20,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
+        android:layout_marginTop="16dp"
         android:elevation="4dp"
         android:gravity="center"
         android:orientation="horizontal"
-        android:padding="16dp"
-        android:weightSum="2">
+        android:paddingHorizontal="10dp">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnNo"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_weight="1"
+            android:layout_marginEnd="16dp"
             android:backgroundTint="@color/red"
             android:text="Không"
             android:textColor="@android:color/white"
@@ -39,10 +38,9 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnYes"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_weight="1"
+            android:layout_marginStart="16dp"
             android:backgroundTint="@color/red"
             android:text="Đăng bài"
             android:textColor="@android:color/white"

@@ -2,26 +2,34 @@ package com.example.btlandroid.ui.main;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.btlandroid.R;
 import com.example.btlandroid.databinding.ActivityMainBinding;
 import com.example.btlandroid.fragment.HomeFragmentUpdated;
 import com.example.btlandroid.ui.BaseActivity;
+import com.example.btlandroid.ui.auth.LoginActivity;
 import com.example.btlandroid.ui.profile.ProfileActivity;
+import com.example.btlandroid.utils.SharedPrefUtil;
+import com.example.btlandroid.viewmodel.UserViewModel;
 
 public class MainActivity extends BaseActivity {
     private ActivityMainBinding binding;
     private int currentPage = R.id.navHome;
     private ActivityResultLauncher<Intent> profileLauncher;
+    private UserViewModel userViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
+        userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
         setContentView(binding.getRoot());
 
         // Khôi phục trạng thái fragment đang chọn
@@ -45,6 +53,21 @@ public class MainActivity extends BaseActivity {
                     }
                 }
         );
+
+        userViewModel.getUserDetail(SharedPrefUtil.getString("userId", null));
+
+        userViewModel.getUserResult().observe(this, liveData -> {
+            if (liveData.loading) {
+                return;
+            }
+            if (liveData.isSuccess) {
+                SharedPrefUtil.putObject("user", liveData.data);
+            } else {
+                Toast.makeText(this, "Đã có lỗi xảy ra. Vui lòng đăng nhập lại!", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, LoginActivity.class));
+                finish();
+            }
+        });
     }
 
     @Override

@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.btlandroid.R;
+import com.example.btlandroid.dto.UserDetail;
 import com.example.btlandroid.models.Post;
 import com.example.btlandroid.ui.BaseActivity;
 import com.example.btlandroid.utils.SharedPrefUtil;
@@ -155,6 +156,9 @@ public class NewPostActivity extends BaseActivity {
     }
 
     private Post setPost() {
+        UserDetail user = SharedPrefUtil.getObject("user", UserDetail.class);
+        if (user == null) return null;
+
         String title = edtTitle.getText().toString().trim();
         String description = edtDescription.getText().toString().trim();
         String subject = edtSubject.getText().toString().trim();
@@ -167,7 +171,9 @@ public class NewPostActivity extends BaseActivity {
         else if (spTypeId == R.id.radioOtherSupportType) supportType = "other";
 
         Post post = new Post();
-        post.setUserId(SharedPrefUtil.getString("userId", null));
+        post.setUserId(user.getId());
+        post.setName(user.getName());
+        post.setAvtURL(user.getAvtURL());
         post.setTitle(title);
         post.setDescription(description);
         post.setSubject(subject);

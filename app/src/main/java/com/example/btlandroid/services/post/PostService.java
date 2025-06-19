@@ -5,9 +5,8 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.btlandroid.dto.Result;
 import com.example.btlandroid.models.Post;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.util.List;
 
 public class PostService {
     public LiveData<Result<Post>> createPost(Post post) {
@@ -21,10 +20,10 @@ public class PostService {
         liveData.setValue(Result.loading());
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("posts")
-                .add(post)
+        DocumentReference docRef = db.collection("posts").document();
+        post.setId(docRef.getId());
+        docRef.set(post)
                 .addOnSuccessListener(documentReference -> {
-                    post.setId(documentReference.getId());
                     liveData.setValue(Result.success(post, "Bài viết đã được đăng!"));
                 })
                 .addOnFailureListener(e -> {

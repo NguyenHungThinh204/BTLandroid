@@ -9,5 +9,6 @@ public class SkillShareApp extends Application {
     public void onCreate() {
         super.onCreate();
         SharedPrefUtil.init(this);
+        registerActivityLifecycleCallbacks(new AppLifecycleHandler());
     }
 }
