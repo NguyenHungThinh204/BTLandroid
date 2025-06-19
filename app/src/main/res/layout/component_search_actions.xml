@@ -45,6 +45,7 @@
         android:gravity="center"
         android:orientation="horizontal">
 
+        <!-- Cần hỗ trợ -->
         <LinearLayout
             android:id="@+id/btn_need_help"
             android:layout_width="0dp"
@@ -72,6 +73,7 @@
 
         </LinearLayout>
 
+        <!-- hỗ trợ người cần -->
         <LinearLayout
             android:id="@+id/btn_support"
             android:layout_width="0dp"
@@ -99,6 +101,7 @@
 
         </LinearLayout>
 
+        <!-- Kết nối -->
         <LinearLayout
             android:id="@+id/btn_connect"
             android:layout_width="0dp"
@@ -126,6 +129,7 @@
 
         </LinearLayout>
 
+        <!-- Đăng bài -->
         <LinearLayout
             android:id="@+id/btn_create_post"
             android:layout_width="0dp"
