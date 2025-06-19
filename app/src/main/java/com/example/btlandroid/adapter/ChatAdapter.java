@@ -1,6 +1,7 @@
 package com.example.btlandroid.adapter;
 
 import android.content.Context;
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,11 +50,19 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        Message message = messageList.get(position);
+        Message current = messageList.get(position);
+        Message previous = (position > 0) ? messageList.get(position - 1) : null;
+
+        boolean showTime = true;
+        if (previous != null) {
+            long diff = current.timestamp - previous.timestamp;
+            showTime = diff >= 60000; // 60.000 ms = 1 phút
+        }
+
         if (holder.getItemViewType() == VIEW_TYPE_SENT) {
-            ((SentViewHolder) holder).bind(message);
+            ((SentViewHolder) holder).bind(current, showTime);
         } else {
-            ((ReceivedViewHolder) holder).bind(message);
+            ((ReceivedViewHolder) holder).bind(current, showTime);
         }
     }
 
@@ -63,28 +72,42 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     static class SentViewHolder extends RecyclerView.ViewHolder {
-        TextView txtMessage;
+        TextView txtMessage, txtTime;
 
         SentViewHolder(View itemView) {
             super(itemView);
             txtMessage = itemView.findViewById(R.id.txtSentMessage);
+            txtTime = itemView.findViewById(R.id.txtSentTime);
         }
 
-        void bind(Message message) {
+        void bind(Message message, boolean showTime) {
             txtMessage.setText(message.text);
+            if (showTime) {
+                txtTime.setVisibility(View.VISIBLE);
+                txtTime.setText(DateFormat.format("HH:mm", message.timestamp));
+            } else {
+                txtTime.setVisibility(View.GONE);
+            }
         }
     }
 
     static class ReceivedViewHolder extends RecyclerView.ViewHolder {
-        TextView txtMessage;
+        TextView txtMessage, txtTime;
 
         ReceivedViewHolder(View itemView) {
             super(itemView);
             txtMessage = itemView.findViewById(R.id.txtReceivedMessage);
+            txtTime = itemView.findViewById(R.id.txtReceivedTime);
         }
 
-        void bind(Message message) {
+        void bind(Message message, boolean showTime) {
             txtMessage.setText(message.text);
+            if (showTime) {
+                txtTime.setVisibility(View.VISIBLE);
+                txtTime.setText(DateFormat.format("HH:mm", message.timestamp));
+            } else {
+                txtTime.setVisibility(View.GONE);
+            }
         }
     }
 }

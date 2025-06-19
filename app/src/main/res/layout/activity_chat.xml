@@ -87,6 +87,18 @@
         android:padding="12dp"
         android:clipToPadding="false"
         android:overScrollMode="never" />
+    <TextView
+        android:id="@+id/txtOneTimeWarning"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Bạn chỉ được nhắn 1 lần duy nhất, sau đó cần được người nhận chấp nhận để tiếp tục."
+        android:textColor="@android:color/holo_red_dark"
+        android:gravity="center"
+        android:padding="8dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/chatInputWrapper"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <!-- Avatar giữa khi chưa có tin nhắn -->
     <ImageView
@@ -114,6 +126,54 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <!-- Thông báo xác nhận kết nối chỉ hiển thị khi là người nhận -->
+    <LinearLayout
+        android:id="@+id/requestApprovalWrapper"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:padding="12dp"
+        android:background="#EEEEEE"
+        app:layout_constraintBottom_toTopOf="@id/chatInputWrapper"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/txtApprovalMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nếu bạn chấp nhận, người dùng này sẽ được kết nối với bạn!"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:paddingBottom="8dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btnReject"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Không chấp nhận"
+                android:textColor="@android:color/holo_red_dark"
+                android:backgroundTint="#FFFFFF"/>
+
+            <Button
+                android:id="@+id/btnAccept"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Chấp nhận"
+                android:textStyle="bold"
+                android:backgroundTint="#CCCCCC"/>
+        </LinearLayout>
+    </LinearLayout>
     <!-- Input chat box -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/chatInputWrapper"
@@ -167,5 +227,4 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
