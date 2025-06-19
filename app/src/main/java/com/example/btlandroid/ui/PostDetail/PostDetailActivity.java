@@ -49,7 +49,7 @@ public class PostDetailActivity extends AppCompatActivity {
         ivBack = findViewById(R.id.iv_back);
         tvPostTitle = findViewById(R.id.tv_post_title);
         tvUserName = findViewById(R.id.tv_user_name);
-        tvUserDepartment = findViewById(R.id.tv_user_department);
+//        tvUserDepartment = findViewById(R.id.tv_user_department);
         tvDescription = findViewById(R.id.tv_description);
         tvFee = findViewById(R.id.tv_fee);
         tvSupportType = findViewById(R.id.tv_support_type);
@@ -105,7 +105,7 @@ public class PostDetailActivity extends AppCompatActivity {
         }
 
         // Set department info
-        tvUserDepartment.setText("Khoa CNTT"); // Default for now
+//        tvUserDepartment.setText("Khoa CNTT"); // Default for now
 
         // Display skills/subjects as horizontal chips
         displaySkillChips();

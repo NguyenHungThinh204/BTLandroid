@@ -91,14 +91,14 @@
                         android:textStyle="bold"
                         android:textColor="@android:color/black" />
 
-                    <TextView
-                        android:id="@+id/tv_user_department"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Khoa CNTT"
-                        android:textSize="14sp"
-                        android:textColor="@android:color/darker_gray"
-                        android:layout_marginTop="4dp" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/tv_user_department"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Khoa CNTT"-->
+<!--                        android:textSize="14sp"-->
+<!--                        android:textColor="@android:color/darker_gray"-->
+<!--                        android:layout_marginTop="4dp" />-->
 
                 </LinearLayout>
 
