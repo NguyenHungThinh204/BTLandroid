@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -145,5 +147,12 @@ public class HomeFragmentUpdated extends Fragment implements SearchActionsCompon
     @Override
     public void onSearchClick(String query) {
         // TODO: Implement search functionality
+    }
+
+    @Override
+    public void onReloadClick() {
+        Toast.makeText(getContext(), "Làm mới dữ liệu...", Toast.LENGTH_SHORT).show();
+        flDynamicContent.removeAllViews();
+        loadPostsFromFirestore();
     }
 }

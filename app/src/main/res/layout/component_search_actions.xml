@@ -155,18 +155,15 @@
 
     </LinearLayout>
 
-    <!-- Add New Post Button -->
-    <Button
-        android:id="@+id/btn_add_post"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <!-- Reload Button -->
+    <ImageView
+        android:id="@+id/iv_reload"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_gravity="end"
         android:layout_margin="16dp"
         android:background="@drawable/button_background"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
-        android:text="Bài đăng mới"
-        android:textColor="@android:color/white"
-        android:textSize="16sp" />
+        android:scaleType="centerInside"
+        android:src="@drawable/autorenew_24dp" />
 
 </LinearLayout>

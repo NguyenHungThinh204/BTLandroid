@@ -15,8 +15,7 @@ public class SearchActionsComponent extends LinearLayout {
 
     private EditText etSearch;
     private LinearLayout btnNeedHelp, btnSupport, btnConnect, btnCreatePost;
-    private Button btnAddPost;
-    private ImageView ivNeedHelp, ivSupport, ivConnect;
+    private ImageView ivNeedHelp, ivSupport, ivConnect, ivReload;
 
     private OnActionClickListener listener;
     private ActionType currentSelectedAction = ActionType.HOME;
@@ -31,6 +30,7 @@ public class SearchActionsComponent extends LinearLayout {
         void onConnectClick();
         void onAddPostClick();
         void onSearchClick(String query);
+        void onReloadClick();
     }
 
     public SearchActionsComponent(Context context) {
@@ -55,11 +55,11 @@ public class SearchActionsComponent extends LinearLayout {
         btnNeedHelp = findViewById(R.id.btn_need_help);
         btnSupport = findViewById(R.id.btn_support);
         btnConnect = findViewById(R.id.btn_connect);
-        btnAddPost = findViewById(R.id.btn_add_post);
         ivNeedHelp = findViewById(R.id.iv_need_help);
         ivSupport = findViewById(R.id.iv_support);
         ivConnect = findViewById(R.id.iv_connect);
         btnCreatePost = findViewById(R.id.btn_create_post);
+        ivReload = findViewById(R.id.iv_reload);
 
         setupClickListeners();
     }
@@ -86,9 +86,9 @@ public class SearchActionsComponent extends LinearLayout {
             }
         });
 
-        btnAddPost.setOnClickListener(v -> {
+        ivReload.setOnClickListener(v -> {
             if (listener != null) {
-                listener.onAddPostClick();
+                listener.onReloadClick();
             }
         });
 
