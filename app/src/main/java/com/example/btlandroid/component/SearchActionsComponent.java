@@ -14,7 +14,7 @@ import com.example.btlandroid.R;
 public class SearchActionsComponent extends LinearLayout {
 
     private EditText etSearch;
-    private LinearLayout btnNeedHelp, btnSupport, btnConnect;
+    private LinearLayout btnNeedHelp, btnSupport, btnConnect, btnCreatePost;
     private Button btnAddPost;
     private ImageView ivNeedHelp, ivSupport, ivConnect;
 
@@ -59,6 +59,7 @@ public class SearchActionsComponent extends LinearLayout {
         ivNeedHelp = findViewById(R.id.iv_need_help);
         ivSupport = findViewById(R.id.iv_support);
         ivConnect = findViewById(R.id.iv_connect);
+        btnCreatePost = findViewById(R.id.btn_create_post);
 
         setupClickListeners();
     }
@@ -86,6 +87,12 @@ public class SearchActionsComponent extends LinearLayout {
         });
 
         btnAddPost.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onAddPostClick();
+            }
+        });
+
+        btnCreatePost.setOnClickListener(v -> {
             if (listener != null) {
                 listener.onAddPostClick();
             }
