@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -45,6 +44,8 @@ public class ProfileActivity extends BaseActivity {
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
         setContentView(R.layout.activity_profile);
         refToViews();
+        currentUser = SharedPrefUtil.getObject("user", UserDetail.class);
+        fillData();
 
         editProfileLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -53,31 +54,12 @@ public class ProfileActivity extends BaseActivity {
                         UserDetail updatedUser = (UserDetail) result.getData().getSerializableExtra("updated_user");
                         if (updatedUser != null) {
                             currentUser = updatedUser;
+                            SharedPrefUtil.putObject("user", currentUser);
                             fillData();
                         }
                     }
                 }
         );
-
-        userViewModel.getUserDetail(SharedPrefUtil.getString("userId", null));
-
-        userViewModel.getUserResult().observe(this, liveData -> {
-            if (liveData.loading) {
-                content.setVisibility(View.GONE);
-                loading.setVisibility(View.VISIBLE);
-                return;
-            }
-            if (liveData.isSuccess) {
-                loading.setVisibility(View.GONE);
-                currentUser = liveData.data;
-                fillData();
-                content.setVisibility(View.VISIBLE);
-            } else {
-                content.setVisibility(View.GONE);
-                loading.setVisibility(View.GONE);
-                Toast.makeText(this, liveData.message, Toast.LENGTH_SHORT).show();
-            }
-        });
 
         setListeners();
     }

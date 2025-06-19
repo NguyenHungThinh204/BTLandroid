@@ -3,6 +3,8 @@ package com.example.btlandroid.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.google.gson.Gson;
+
 public class SharedPrefUtil {
     private static final String PREF_NAME = "skill_share_app";
     private static SharedPreferences sharedPreferences;
@@ -12,6 +14,21 @@ public class SharedPrefUtil {
             sharedPreferences = context.getApplicationContext()
                     .getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         }
+    }
+
+    public static void putObject(String key, Object value) {
+        Gson gson = new Gson();
+        String json = gson.toJson(value);
+        sharedPreferences.edit().putString(key, json).apply();
+    }
+
+    public static <T> T getObject(String key, Class<T> clazz) {
+        String json = sharedPreferences.getString(key, null);
+        if (json != null) {
+            Gson gson = new Gson();
+            return gson.fromJson(json, clazz);
+        }
+        return null;
     }
 
     public static void putString(String key, String value) {

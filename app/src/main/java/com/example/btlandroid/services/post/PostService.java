@@ -1,13 +1,18 @@
 package com.example.btlandroid.services.post;
 
-import androidx.annotation.NonNull;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
+import com.example.btlandroid.dto.Result;
 import com.example.btlandroid.models.Post;
+import com.google.firebase.FirebaseNetworkException;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
+import com.google.firebase.firestore.DocumentReference;
 import com.example.btlandroid.models.User;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,6 +23,35 @@ public class PostService {
     public interface PostListCallback {
         void onResult(List<Post> needPosts, List<Post> offerPosts);
         void onError(Exception e);
+    }
+
+    public LiveData<Result<Post>> createPost(Post post) {
+        MutableLiveData<Result<Post>> liveData = new MutableLiveData<>();
+
+        if (post == null) {
+            liveData.setValue(Result.error("Thông tin bài đăng không hợp lệ."));
+            return liveData;
+        }
+
+        liveData.setValue(Result.loading());
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        DocumentReference docRef = db.collection("posts").document();
+        post.setId(docRef.getId());
+        docRef.set(post)
+                .addOnSuccessListener(documentReference -> {
+                    liveData.setValue(Result.success(post, "Bài viết đã được đăng tải!"));
+                })
+                .addOnFailureListener(e -> {
+                    String msg;
+                    if (e instanceof FirebaseNetworkException) {
+                        msg = "Vui lòng kiểm tra kết nối mạng của bạn!";
+                    } else {
+                        msg = "Đã có lỗi xảy ra: " + e;
+                    }
+                    liveData.setValue(Result.error(msg));
+                });
+        return liveData;
     }
 
     public void getAllPostsWithUser(final PostListCallback callback) {
@@ -66,4 +100,4 @@ public class PostService {
             }).addOnFailureListener(callback::onError);
         }).addOnFailureListener(callback::onError);
     }
-} 
+}

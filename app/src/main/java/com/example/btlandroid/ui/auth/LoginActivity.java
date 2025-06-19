@@ -31,13 +31,16 @@ public class LoginActivity extends AppCompatActivity {
 
         userViewModel.getLoginResult().observe(this, liveData -> {
             if (liveData.loading) {
-                btnLogin.setEnabled(false);
                 btnLogin.setText("Đang đăng nhập...");
+                btnLogin.setEnabled(false);
                 return;
             }
             if (liveData.isSuccess) {
                 SharedPrefUtil.putString("userId", liveData.data.getId());
-                startActivity(new Intent(this, MainActivity.class));
+                Intent intent = new Intent(this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.putExtra("SKIP_LOGIN_CHECK", true);
+                startActivity(intent);
                 finish();
             } else {
                 Toast.makeText(this, liveData.message, Toast.LENGTH_SHORT).show();
