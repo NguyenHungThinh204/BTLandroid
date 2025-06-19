@@ -9,9 +9,9 @@
               <option name="connection">
                 <ConnectionSetting>
                   <option name="appId" value="com.example.btlandroid" />
-                  <option name="mobileSdkAppId" value="1:734018508182:android:c075969fe80f00bd42f9b7" />
-                  <option name="projectId" value="btlandroid-27983" />
-                  <option name="projectNumber" value="734018508182" />
+                  <option name="mobileSdkAppId" value="1:119510009106:android:ec6a0eefdf83740ee89fcb" />
+                  <option name="projectId" value="tlu-skillshare" />
+                  <option name="projectNumber" value="119510009106" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

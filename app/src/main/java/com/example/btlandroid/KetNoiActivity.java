@@ -1,8 +1,9 @@
 package com.example.btlandroid;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -14,18 +15,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.btlandroid.adapter.UserAdapter;
 import com.example.btlandroid.model.User;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class KetNoiActivity extends AppCompatActivity {
 
-    private String currentUserId = "user1"; // 👈 Sửa thành người đang đăng nhập thực tế (sau này)
+    private String currentUserId = "user1"; // 👉 Sửa thành người đăng nhập thực tế
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,41 +37,34 @@ public class KetNoiActivity extends AppCompatActivity {
         RecyclerView listKetNoi = findViewById(R.id.listKetNoi);
         listKetNoi.setLayoutManager(new LinearLayoutManager(this));
 
-        // Lấy danh sách từ Firebase
-        DatabaseReference chatsRef = FirebaseDatabase
-                .getInstance("https://btlandroid-27983-default-rtdb.asia-southeast1.firebasedatabase.app")
-                .getReference("chats");
+        List<User> connectedUsers = new ArrayList<>();
+        UserAdapter adapter = new UserAdapter(this, connectedUsers, currentUserId);
+        listKetNoi.setAdapter(adapter);
 
-        chatsRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                List<User> connectedUsers = new ArrayList<>();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        CollectionReference chatsRef = db.collection("chats");
 
-                for (DataSnapshot chatSnapshot : snapshot.getChildren()) {
-                    String chatKey = chatSnapshot.getKey(); // Ví dụ: "user3_user2"
-                    if (chatKey != null && chatKey.contains(currentUserId)) {
-                        String[] parts = chatKey.split("_");
+        chatsRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                connectedUsers.clear();
+                for (QueryDocumentSnapshot doc : task.getResult()) {
+                    String chatId = doc.getId(); // ex: user1_user2
+
+                    if (chatId.contains(currentUserId)) {
+                        String[] parts = chatId.split("_");
                         if (parts.length == 2) {
                             String otherUserId = parts[0].equals(currentUserId) ? parts[1] : parts[0];
-
-                            // Nếu chưa có bảng users, tạm dùng ID làm tên
-                            connectedUsers.add(new User(otherUserId, otherUserId));
+                            connectedUsers.add(new User(otherUserId, otherUserId)); // 🔁 Tên thật nếu có
                         }
                     }
                 }
-
-                // Gán adapter
-                UserAdapter adapter = new UserAdapter(KetNoiActivity.this, connectedUsers, currentUserId);
-                listKetNoi.setAdapter(adapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(KetNoiActivity.this, "Lỗi tải dữ liệu!", Toast.LENGTH_SHORT).show();
+                adapter.notifyDataSetChanged();
+            } else {
+                Toast.makeText(KetNoiActivity.this, "Lỗi tải dữ liệu từ Firestore", Toast.LENGTH_SHORT).show();
             }
         });
 
-        // Nút trở về Trang chủ
+        // Nút về trang chủ
         ImageButton btnHome = findViewById(R.id.btnHome);
         btnHome.setOnClickListener(v -> {
             Intent intent = new Intent(KetNoiActivity.this, TrangChuActivity.class);
@@ -78,7 +73,7 @@ public class KetNoiActivity extends AppCompatActivity {
             finish();
         });
 
-        // Nút chuyển sang màn hình "Chờ kết nối"
+        // Nút chuyển sang "Chờ kết nối"
         Button btnChoKetNoi = findViewById(R.id.btnChoKetNoi);
         btnChoKetNoi.setOnClickListener(v -> {
             Intent intent = new Intent(KetNoiActivity.this, ChoKetNoiActivity.class);
@@ -86,4 +81,3 @@ public class KetNoiActivity extends AppCompatActivity {
         });
     }
 }
-

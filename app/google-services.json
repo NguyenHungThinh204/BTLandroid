@@ -1,13 +1,14 @@
 {
   "project_info": {
-    "project_number": "734018508182",
-    "project_id": "btlandroid-27983",
-    "storage_bucket": "btlandroid-27983.firebasestorage.app"
+    "project_number": "119510009106",
+    "firebase_url": "https://tlu-skillshare-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "tlu-skillshare",
+    "storage_bucket": "tlu-skillshare.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:734018508182:android:c075969fe80f00bd42f9b7",
+        "mobilesdk_app_id": "1:119510009106:android:ec6a0eefdf83740ee89fcb",
         "android_client_info": {
           "package_name": "com.example.btlandroid"
         }
@@ -15,7 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyB0p7lkB00Cmd-afSBKSKvIJbvdqVsXaOI"
+          "current_key": "AIzaSyApa1rXUZrVsFwoPTMmBldzeFbZREKBkWQ"
         }
       ],
       "services": {

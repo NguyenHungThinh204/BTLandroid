@@ -21,10 +21,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.btlandroid.adapter.ChatAdapter;
 import com.example.btlandroid.model.Message;
-import com.google.firebase.database.*;
+import com.google.firebase.firestore.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class ChatActivity extends AppCompatActivity {
 
@@ -35,7 +34,8 @@ public class ChatActivity extends AppCompatActivity {
     private List<Message> messageList;
     private ChatAdapter chatAdapter;
 
-    private DatabaseReference chatRef;
+    private FirebaseFirestore db;
+    private CollectionReference messagesRef;
 
     private String currentUserId;
     private String otherUserId;
@@ -53,7 +53,7 @@ public class ChatActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Nhận dữ liệu người dùng từ Intent
+        // Nhận dữ liệu từ intent
         currentUserId = getIntent().getStringExtra("currentUserId");
         otherUserId = getIntent().getStringExtra("receiverId");
         otherUserName = getIntent().getStringExtra("receiverName");
@@ -64,7 +64,7 @@ public class ChatActivity extends AppCompatActivity {
             return;
         }
 
-        // Quay lại màn hình kết nối
+        // Giao diện quay lại
         ImageButton btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(v -> {
             Intent intent = new Intent(ChatActivity.this, KetNoiActivity.class);
@@ -73,7 +73,7 @@ public class ChatActivity extends AppCompatActivity {
             finish();
         });
 
-        // Hiển thị tên người chat
+        // Hiển thị tên người nhận
         TextView txtNameTop = findViewById(R.id.txtNameTop);
         TextView txtNameCenter = findViewById(R.id.txtNameCenter);
         if (otherUserName != null) {
@@ -81,7 +81,7 @@ public class ChatActivity extends AppCompatActivity {
             txtNameCenter.setText(otherUserName);
         }
 
-        // Ánh xạ giao diện
+        // Ánh xạ view
         recyclerView = findViewById(R.id.recyclerChat);
         edtMessage = findViewById(R.id.edtMessage);
         btnSend = findViewById(R.id.btnSend);
@@ -91,45 +91,39 @@ public class ChatActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(chatAdapter);
 
-        // Firebase path: /chats/userA_userB/messages
+        // Firestore
+        db = FirebaseFirestore.getInstance();
         String chatId = getChatId(currentUserId, otherUserId);
-        chatRef = FirebaseDatabase
-                .getInstance("https://btlandroid-27983-default-rtdb.asia-southeast1.firebasedatabase.app")
-                .getReference("chats")
-                .child(chatId)
-                .child("messages");
+        messagesRef = db.collection("chats").document(chatId).collection("messages");
 
         // Gửi tin nhắn
         btnSend.setOnClickListener(v -> {
             String text = edtMessage.getText().toString().trim();
             if (!TextUtils.isEmpty(text)) {
                 Message message = new Message(currentUserId, text, System.currentTimeMillis());
-                chatRef.push().setValue(message)
-                        .addOnSuccessListener(unused -> edtMessage.setText(""))
-                        .addOnFailureListener(e -> Toast.makeText(this, "Lỗi gửi tin: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+                messagesRef.add(message)
+                        .addOnSuccessListener(documentReference -> edtMessage.setText(""))
+                        .addOnFailureListener(e -> Toast.makeText(this, "Lỗi gửi: " + e.getMessage(), Toast.LENGTH_SHORT).show());
             }
         });
 
-        // Lắng nghe dữ liệu
-        chatRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                messageList.clear();
-                for (DataSnapshot child : snapshot.getChildren()) {
-                    Message msg = child.getValue(Message.class);
-                    if (msg != null) {
-                        messageList.add(msg);
+        // Lắng nghe tin nhắn
+        messagesRef.orderBy("timestamp", Query.Direction.ASCENDING)
+                .addSnapshotListener((snapshots, error) -> {
+                    if (error != null) {
+                        Toast.makeText(this, "Lỗi tải tin nhắn", Toast.LENGTH_SHORT).show();
+                        return;
                     }
-                }
-                chatAdapter.notifyDataSetChanged();
-                recyclerView.scrollToPosition(messageList.size() - 1);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                Toast.makeText(ChatActivity.this, "Lỗi tải tin nhắn!", Toast.LENGTH_SHORT).show();
-            }
-        });
+                    if (snapshots != null) {
+                        messageList.clear();
+                        for (DocumentSnapshot doc : snapshots) {
+                            Message msg = doc.toObject(Message.class);
+                            if (msg != null) messageList.add(msg);
+                        }
+                        chatAdapter.notifyDataSetChanged();
+                        recyclerView.scrollToPosition(messageList.size() - 1);
+                    }
+                });
     }
 
     private String getChatId(String u1, String u2) {
