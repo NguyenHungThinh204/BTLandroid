@@ -9,6 +9,7 @@ import com.example.btlandroid.models.Department;
 import com.example.btlandroid.models.User;
 import com.example.btlandroid.services.department.DepartmentService;
 import com.example.btlandroid.utils.SharedPrefUtil;
+import com.google.firebase.FirebaseNetworkException;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
@@ -67,6 +68,8 @@ public class UserService {
                             msg = "Tài khoản không tồn tại!";
                         } else if (e instanceof FirebaseAuthInvalidCredentialsException) {
                             msg = "Email hoặc mật khẩu không đúng!";
+                        } else if (e instanceof FirebaseNetworkException) {
+                            msg = "Vui lòng kiểm tra kết nối mạng của bạn!";
                         } else {
                             msg = "Đăng nhập thất bại: " + e;
                         }

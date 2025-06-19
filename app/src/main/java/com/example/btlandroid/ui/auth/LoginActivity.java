@@ -39,7 +39,9 @@ public class LoginActivity extends AppCompatActivity {
                 SharedPrefUtil.putString("userId", liveData.data.getId());
                 Intent intent = new Intent(this, MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.putExtra("SKIP_LOGIN_CHECK", true);
                 startActivity(intent);
+                finish();
             } else {
                 Toast.makeText(this, liveData.message, Toast.LENGTH_SHORT).show();
                 btnLogin.setEnabled(true);

@@ -32,7 +32,7 @@ public class AppLifecycleHandler implements Application.ActivityLifecycleCallbac
             Log.d("AppLifecycle", "App killed");
 
             // Xóa dữ liệu nếu app bị kill
-            SharedPreferences prefs = activity.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+            SharedPreferences prefs = activity.getSharedPreferences("skill_share_app", Context.MODE_PRIVATE);
             prefs.edit().clear().apply();
 
             FirebaseAuth.getInstance().signOut();

@@ -40,8 +40,7 @@ public class HomeFragmentUpdated extends Fragment implements SearchActionsCompon
 
         initViews(view);
         setupComponent();
-        loadMockData();
-        showDefaultContent();
+        loadPostsFromFirestore();
 
         return view;
     }
@@ -55,24 +54,24 @@ public class HomeFragmentUpdated extends Fragment implements SearchActionsCompon
         searchActionsComponent.setOnActionClickListener(this);
     }
 
-    private void loadMockData() {
-        // Mock data for posts needing help
+    private void loadPostsFromFirestore() {
         needHelpPosts = new ArrayList<>();
-        needHelpPosts.add(new Post("1", "1","Nguyễn Văn A", "", "Cần gia sư Toán", "Cần tìm gia sư dạy Toán lớp 12, chuẩn bị thi đại học", "Toán, Đại số", "2 giờ trước", "200.000đ/buổi", "need_help","need"));
-        needHelpPosts.add(new Post("2","2","Trần Thị B","", "Học tiếng Anh giao tiếp", "Muốn học tiếng Anh giao tiếp cơ bản cho công việc", "Tiếng Anh,Giao tiếp", "5 giờ trước", "150.000đ/buổi", "need_help", "need"));
-        needHelpPosts.add(new Post("3","3","Lê Văn C", "", "Cần hỗ trợ lập trình", "Cần người hướng dẫn Java cơ bản và OOP", "Lập trình, Java", "1 ngày trước", "300.000đ/buổi", "need_help", "need"));
-        needHelpPosts.add(new Post("4", "4","Phạm Thị D", "Học Photoshop", "", "Cần học Photoshop cơ bản để làm thiết kế", "Photoshop, Thiết kế", "3 giờ trước", "180.000đ/buổi", "need_help","need"));
-        needHelpPosts.add(new Post("5","5","Hoàng Văn E", "Gia sư Vật lý","", "Cần gia sư dạy Vật lý lớp 11", "Vật lý", "6 giờ trước", "220.000đ/buổi", "need_help","need"));
-        needHelpPosts.add(new Post("6","6","Đỗ Thị F","", "Học Excel nâng cao", "Muốn học Excel nâng cao cho công việc văn phòng", "Excel, Tin học", "4 giờ trước", "120.000đ/buổi", "need_help","need"));
-
-        // Mock data for posts offering help
         offerHelpPosts = new ArrayList<>();
-        offerHelpPosts.add(new Post("7","7","Phạm Văn D","", "Dạy Toán cấp 3", "Có kinh nghiệm 3 năm dạy Toán THPT, đã giúp nhiều học sinh đỗ đại học", "Toán, Hình học, Đại số", "3 giờ trước", "180.000đ/buổi", "Gia sư","need"));
-        offerHelpPosts.add(new Post("8","8","Hoàng Thị E","", "Dạy tiếng Anh IELTS", "IELTS 7.5, có thể dạy từ cơ bản đến nâng cao", "Tiếng Anh, IELTS", "6 giờ trước", "250.000đ/buổi", "Gia sư","offer"));
-        offerHelpPosts.add(new Post("9","9","Đỗ Văn F","", "Hướng dẫn lập trình", "Senior Developer, có thể dạy Java, Python, Web Development", "Lập trình, Java, Python, Web", "1 ngày trước", "400.000đ/buổi", "Mentor","offer"));
-        offerHelpPosts.add(new Post("10","10","Nguyễn Thị G","", "Dạy Photoshop", "Graphic Designer 5 năm kinh nghiệm", "Photoshop, Thiết kế", "2 giờ trước", "200.000đ/buổi", "Mentor","offer"));
-        offerHelpPosts.add(new Post("11","11","Trần Văn H","", "Gia sư Vật lý", "Thạc sĩ Vật lý, dạy từ cấp 2 đến cấp 3", "Vật lý", "4 giờ trước", "240.000đ/buổi", "Gia sư","offer"));
-        offerHelpPosts.add(new Post("12","12","Lê Thị I","", "Dạy Excel chuyên nghiệp", "Chuyên gia Excel với 7 năm kinh nghiệm", "Excel, Tin học", "5 giờ trước", "150.000đ/buổi", "Mentor","offer"));
+        com.example.btlandroid.services.post.PostService postService = new com.example.btlandroid.services.post.PostService();
+        postService.getAllPostsWithUser(new com.example.btlandroid.services.post.PostService.PostListCallback() {
+            @Override
+            public void onResult(List<Post> needPosts, List<Post> offerPosts) {
+                needHelpPosts.clear();
+                offerHelpPosts.clear();
+                needHelpPosts.addAll(needPosts);
+                offerHelpPosts.addAll(offerPosts);
+                showDefaultContent();
+            }
+            @Override
+            public void onError(Exception e) {
+                // Xử lý lỗi, ví dụ: Toast.makeText(getContext(), "Lỗi tải dữ liệu: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void showDefaultContent() {

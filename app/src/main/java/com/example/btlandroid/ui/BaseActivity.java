@@ -14,6 +14,11 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+
+        if (getIntent().getBooleanExtra("SKIP_LOGIN_CHECK", false)) {
+            return;
+        }
+
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         UserDetail userDetail = SharedPrefUtil.getObject("user", UserDetail.class);
         if (user == null || userDetail == null) {
