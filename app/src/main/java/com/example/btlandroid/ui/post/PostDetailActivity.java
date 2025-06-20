@@ -1,4 +1,4 @@
-package com.example.btlandroid.ui.PostDetail;
+package com.example.btlandroid.ui.post;
 
 
 import android.content.Context;

@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.btlandroid.R;
 import com.example.btlandroid.models.Post;
-import com.example.btlandroid.ui.PostDetail.PostDetailActivity;
+import com.example.btlandroid.ui.post.PostDetailActivity;
 
 import java.util.List;
 
