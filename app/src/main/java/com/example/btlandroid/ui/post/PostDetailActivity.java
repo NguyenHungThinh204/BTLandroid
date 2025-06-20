@@ -15,6 +15,7 @@ import com.example.btlandroid.R;
 import com.example.btlandroid.models.Post;
 import com.example.btlandroid.ui.BaseActivity;
 import com.example.btlandroid.utils.Util;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.imageview.ShapeableImageView;
 
 public class PostDetailActivity extends BaseActivity {
@@ -25,7 +26,7 @@ public class PostDetailActivity extends BaseActivity {
     private TextView tvPostTitle, tvUserName, tvUserDepartment, tvDescription, tvFee, tvSupportType, tvPostDate;
     private ShapeableImageView ivUserAvatar;
     private LinearLayout llSkills; // Changed from FlexboxLayout to LinearLayout
-    private Button btnContact, btnSave;
+    private MaterialButton btnContact, btnSave;
 
     private Post currentPost;
 
