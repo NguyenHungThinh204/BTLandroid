@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.btlandroid.R;
 import com.example.btlandroid.model.Message;
 
+import java.util.Calendar;
 import java.util.List;
 
 public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -51,18 +52,31 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Message current = messageList.get(position);
-        Message previous = (position > 0) ? messageList.get(position - 1) : null;
 
         boolean showTime = true;
-        if (previous != null) {
-            long diff = current.timestamp - previous.timestamp;
-            showTime = diff >= 60000; // 60.000 ms = 1 phút
+        boolean showDate = true;
+
+        if (position > 0) {
+            Message previous = messageList.get(position - 1);
+            long timeDiff = current.timestamp - previous.timestamp;
+            showTime = timeDiff >= 60000;
+
+            // So sánh ngày để hiển thị line ngày
+            Calendar cal1 = Calendar.getInstance();
+            cal1.setTimeInMillis(previous.timestamp);
+            Calendar cal2 = Calendar.getInstance();
+            cal2.setTimeInMillis(current.timestamp);
+            showDate = cal1.get(Calendar.YEAR) != cal2.get(Calendar.YEAR)
+                    || cal1.get(Calendar.DAY_OF_YEAR) != cal2.get(Calendar.DAY_OF_YEAR);
+        } else {
+            // Tin nhắn đầu tiên luôn hiển thị ngày
+            showDate = true;
         }
 
-        if (holder.getItemViewType() == VIEW_TYPE_SENT) {
-            ((SentViewHolder) holder).bind(current, showTime);
-        } else {
-            ((ReceivedViewHolder) holder).bind(current, showTime);
+        if (holder instanceof SentViewHolder) {
+            ((SentViewHolder) holder).bind(current, showTime, showDate);
+        } else if (holder instanceof ReceivedViewHolder) {
+            ((ReceivedViewHolder) holder).bind(current, showTime, showDate);
         }
     }
 
@@ -72,41 +86,59 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     static class SentViewHolder extends RecyclerView.ViewHolder {
-        TextView txtMessage, txtTime;
+        TextView txtMessage, txtTime, txtDate;
 
         SentViewHolder(View itemView) {
             super(itemView);
             txtMessage = itemView.findViewById(R.id.txtSentMessage);
             txtTime = itemView.findViewById(R.id.txtSentTime);
+            txtDate = itemView.findViewById(R.id.txtSentDate);
         }
 
-        void bind(Message message, boolean showTime) {
+        void bind(Message message, boolean showTime, boolean showDate) {
             txtMessage.setText(message.text);
+
             if (showTime) {
                 txtTime.setVisibility(View.VISIBLE);
                 txtTime.setText(DateFormat.format("HH:mm", message.timestamp));
             } else {
                 txtTime.setVisibility(View.GONE);
             }
+
+            if (showDate) {
+                txtDate.setVisibility(View.VISIBLE);
+                txtDate.setText(DateFormat.format("dd/MM/yyyy", message.timestamp));
+            } else {
+                txtDate.setVisibility(View.GONE);
+            }
         }
     }
 
     static class ReceivedViewHolder extends RecyclerView.ViewHolder {
-        TextView txtMessage, txtTime;
+        TextView txtMessage, txtTime, txtDate;
 
         ReceivedViewHolder(View itemView) {
             super(itemView);
             txtMessage = itemView.findViewById(R.id.txtReceivedMessage);
             txtTime = itemView.findViewById(R.id.txtReceivedTime);
+            txtDate = itemView.findViewById(R.id.txtReceivedDate);
         }
 
-        void bind(Message message, boolean showTime) {
+        void bind(Message message, boolean showTime, boolean showDate) {
             txtMessage.setText(message.text);
+
             if (showTime) {
                 txtTime.setVisibility(View.VISIBLE);
                 txtTime.setText(DateFormat.format("HH:mm", message.timestamp));
             } else {
                 txtTime.setVisibility(View.GONE);
+            }
+
+            if (showDate) {
+                txtDate.setVisibility(View.VISIBLE);
+                txtDate.setText(DateFormat.format("dd/MM/yyyy", message.timestamp));
+            } else {
+                txtDate.setVisibility(View.GONE);
             }
         }
     }

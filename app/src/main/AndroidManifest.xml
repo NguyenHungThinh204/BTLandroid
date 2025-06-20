@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Btlandroid"
         tools:targetApi="31">
         <activity
+            android:name=".TimKiemTrangChuActivity"
+            android:exported="false" />
+        <activity
             android:name=".ChatActivity"
             android:exported="false" />
         <activity

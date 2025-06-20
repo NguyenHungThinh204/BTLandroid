@@ -131,7 +131,7 @@ public class ChatActivity extends AppCompatActivity {
                     messagesRef.whereEqualTo("senderId", currentUserId)
                             .get()
                             .addOnSuccessListener(query -> {
-                                if (query.size() >= 1) {
+                                if (query.size() >= 2) {
                                     edtMessage.setEnabled(false);
                                     btnSend.setEnabled(false);
                                 }

@@ -33,6 +33,7 @@
         android:textColor="#000000"
         android:textSize="14sp"
         android:padding="10dp"
+        android:inputType="textCapSentences|textMultiLine"
         app:layout_constraintTop_toBottomOf="@id/topBar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
