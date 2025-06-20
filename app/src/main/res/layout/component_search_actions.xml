@@ -54,12 +54,12 @@
             android:background="?attr/selectableItemBackground"
             android:gravity="center"
             android:orientation="vertical"
-            android:padding="8dp">
+            android:padding="6dp">
 
             <ImageView
                 android:id="@+id/iv_need_help"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
                 android:background="@drawable/circle_background"
                 android:scaleType="centerInside"
                 android:src="@drawable/need_help" />
@@ -69,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="Cần hỗ trợ"
-                android:textSize="13sp" />
+                android:textSize="11sp" />
 
         </LinearLayout>
 
@@ -82,12 +82,12 @@
             android:background="?attr/selectableItemBackground"
             android:gravity="center"
             android:orientation="vertical"
-            android:padding="8dp">
+            android:padding="6dp">
 
             <ImageView
                 android:id="@+id/iv_support"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
                 android:background="@drawable/circle_background"
                 android:scaleType="centerInside"
                 android:src="@drawable/support" />
@@ -97,7 +97,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="Hỗ trợ"
-                android:textSize="13sp" />
+                android:textSize="11sp" />
 
         </LinearLayout>
 
@@ -110,12 +110,12 @@
             android:background="?attr/selectableItemBackground"
             android:gravity="center"
             android:orientation="vertical"
-            android:padding="8dp">
+            android:padding="6dp">
 
             <ImageView
                 android:id="@+id/iv_connect"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
                 android:background="@drawable/circle_background"
                 android:scaleType="centerInside"
                 android:src="@drawable/favorite_24dp" />
@@ -125,7 +125,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="Kết nối"
-                android:textSize="13sp" />
+                android:textSize="11sp" />
 
         </LinearLayout>
 
@@ -138,12 +138,12 @@
             android:background="?attr/selectableItemBackground"
             android:gravity="center"
             android:orientation="vertical"
-            android:padding="8dp">
+            android:padding="6dp">
 
             <ImageView
                 android:id="@+id/iv_add_post"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
                 android:background="@drawable/circle_background"
                 android:scaleType="centerInside"
                 android:src="@drawable/add_24dp" />
@@ -153,7 +153,35 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="Đăng bài"
-                android:textSize="13sp" />
+                android:textSize="11sp" />
+
+        </LinearLayout>
+
+        <!-- Menu -->
+        <LinearLayout
+            android:id="@+id/btnMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="6dp">
+
+            <ImageView
+                android:id="@+id/ivMenu"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/circle_background"
+                android:scaleType="centerInside"
+                android:src="@drawable/menu_24dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Menu"
+                android:textSize="11sp" />
 
         </LinearLayout>
 

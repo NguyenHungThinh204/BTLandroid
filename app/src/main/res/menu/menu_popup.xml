@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_lich_su_dang_bai"
+        android:title="Lịch sử đăng bài" />
+    <item
+        android:id="@+id/menu_lich_su_danh_gia"
+        android:title="Lịch sử đánh giá" />
+    <item
+        android:id="@+id/menu_lich_su_tuong_tac"
+        android:title="Lịch sử bài đăng đã tương tác" />
+</menu>

@@ -15,6 +15,7 @@ import com.example.btlandroid.databinding.ActivityMainBinding;
 import com.example.btlandroid.fragment.HomeFragmentUpdated;
 import com.example.btlandroid.ui.BaseActivity;
 import com.example.btlandroid.ui.auth.LoginActivity;
+import com.example.btlandroid.ui.chat.ChatFragment;
 import com.example.btlandroid.ui.profile.ProfileActivity;
 import com.example.btlandroid.utils.SharedPrefUtil;
 import com.example.btlandroid.viewmodel.UserViewModel;
@@ -90,7 +91,7 @@ public class MainActivity extends BaseActivity {
     private void loadFragmentById(int id) {
         Fragment fragment = new HomeFragmentUpdated(); // mặc định là Home
         if (id == R.id.navChat) {
-            fragment = new HomeFragmentUpdated();
+            fragment = new ChatFragment();
         } else if (id == R.id.navProfile) {
             profileLauncher.launch(new Intent(this, ProfileActivity.class));
             return;

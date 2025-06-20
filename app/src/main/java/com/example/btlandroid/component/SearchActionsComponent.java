@@ -81,13 +81,14 @@ public class SearchActionsComponent extends LinearLayout {
 
         btnConnect.setOnClickListener(v -> {
             if (listener != null) {
-                setSelectedAction(ActionType.CONNECT);
+//                setSelectedAction(ActionType.CONNECT);
                 listener.onConnectClick();
             }
         });
 
         ivReload.setOnClickListener(v -> {
             if (listener != null) {
+                setSelectedAction(ActionType.HOME);
                 listener.onReloadClick();
             }
         });
