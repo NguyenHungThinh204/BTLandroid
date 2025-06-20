@@ -266,29 +266,31 @@
                 android:gravity="center"
                 android:layout_marginTop="20dp">
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_contact"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Liên hệ"
-                    android:background="@drawable/button_background"
                     android:textColor="@android:color/white"
                     android:textStyle="bold"
                     android:layout_marginEnd="8dp"
-                    android:padding="12dp" />
+                    android:padding="0dp"
+                    android:backgroundTint="@color/red" />
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_save"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Lưu bài đăng"
-                    android:background="@drawable/button_outline_background"
                     android:textColor="@color/primary_color"
                     android:textStyle="bold"
                     android:layout_marginStart="8dp"
-                    android:padding="12dp" />
+                    android:padding="0dp"
+                    android:backgroundTint="@android:color/transparent"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="@color/primary_color" />
 
             </LinearLayout>
 

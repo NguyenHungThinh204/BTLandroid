@@ -1,4 +1,4 @@
-package com.example.btlandroid.ui.PostDetail;
+package com.example.btlandroid.ui.post;
 
 
 import android.content.Context;
@@ -14,6 +14,8 @@ import com.bumptech.glide.Glide;
 import com.example.btlandroid.R;
 import com.example.btlandroid.models.Post;
 import com.example.btlandroid.ui.BaseActivity;
+import com.example.btlandroid.utils.Util;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.imageview.ShapeableImageView;
 
 public class PostDetailActivity extends BaseActivity {
@@ -24,7 +26,7 @@ public class PostDetailActivity extends BaseActivity {
     private TextView tvPostTitle, tvUserName, tvUserDepartment, tvDescription, tvFee, tvSupportType, tvPostDate;
     private ShapeableImageView ivUserAvatar;
     private LinearLayout llSkills; // Changed from FlexboxLayout to LinearLayout
-    private Button btnContact, btnSave;
+    private MaterialButton btnContact, btnSave;
 
     private Post currentPost;
 
@@ -84,19 +86,19 @@ public class PostDetailActivity extends BaseActivity {
 
         // Set basic post information
         tvPostTitle.setText(currentPost.getTitle());
-        tvUserName.setText(currentPost.getName());
+        tvUserName.setText(currentPost.getUserName());
         tvDescription.setText(currentPost.getDescription());
-        tvFee.setText(currentPost.getFee());
-        tvSupportType.setText(currentPost.getSupportType());
+        tvFee.setText(Util.parseBudget(currentPost.getBudget()));
+        tvSupportType.setText(Util.parseSpType(currentPost.getSupportType()));
 
         // Format and display post date
-        String formattedDate = "Đăng ngày " + currentPost.getTime();
+        String formattedDate = "Đã đăng: " + Util.parseTime(currentPost.getCreatedAt());
         tvPostDate.setText(formattedDate);
 
         // Load user avatar using Glide
-        if (currentPost.getAvtURL() != null && !currentPost.getAvtURL().isEmpty()) {
+        if (currentPost.getUserAvtURL() != null && !currentPost.getUserAvtURL().isEmpty()) {
             Glide.with(this)
-                    .load(currentPost.getAvtURL())
+                    .load(currentPost.getUserAvtURL())
                     .placeholder(R.drawable.person_24dp)
                     .error(R.drawable.person_24dp)
                     .into(ivUserAvatar);

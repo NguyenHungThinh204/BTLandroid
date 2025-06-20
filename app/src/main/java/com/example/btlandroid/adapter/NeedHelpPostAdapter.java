@@ -10,7 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.btlandroid.R;
 import com.example.btlandroid.models.Post;
-import com.example.btlandroid.ui.PostDetail.PostDetailActivity;
+import com.example.btlandroid.ui.post.PostDetailActivity;
+import com.example.btlandroid.utils.Util;
 
 import java.util.List;
 
@@ -34,11 +35,12 @@ public class NeedHelpPostAdapter extends RecyclerView.Adapter<NeedHelpPostAdapte
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Post post = postList.get(position);
 
-        holder.tvUserName.setText(post.getName());
+        holder.tvUserName.setText(post.getUserName());
         holder.tvTitle.setText(post.getTitle());
         holder.tvDescription.setText(post.getDescription());
-        holder.tvFee.setText(post.getFee());
-        holder.tvTime.setText(post.getTime());
+        holder.tvFee.setText(Util.parseBudget(post.getBudget()));
+        holder.tvTime.setText(Util.parseTime(post.getCreatedAt()));
+        holder.tvSupportType.setText(Util.parseSpType(post.getSupportType()));
 
         // Join subjects with comma
         if (post.getSubject() != null && !post.getSubject().isEmpty()) {
@@ -57,7 +59,7 @@ public class NeedHelpPostAdapter extends RecyclerView.Adapter<NeedHelpPostAdapte
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvUserName, tvTitle, tvDescription, tvSubjects, tvFee, tvTime;
+        TextView tvUserName, tvTitle, tvDescription, tvSubjects, tvFee, tvTime, tvSupportType;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -67,6 +69,7 @@ public class NeedHelpPostAdapter extends RecyclerView.Adapter<NeedHelpPostAdapte
             tvSubjects = itemView.findViewById(R.id.tv_subjects);
             tvFee = itemView.findViewById(R.id.tv_fee);
             tvTime = itemView.findViewById(R.id.tv_time);
+            tvSupportType = itemView.findViewById(R.id.tv_support_type);
         }
     }
 }

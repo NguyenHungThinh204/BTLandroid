@@ -162,7 +162,7 @@ public class NewPostActivity extends BaseActivity {
         String title = edtTitle.getText().toString().trim();
         String description = edtDescription.getText().toString().trim();
         String subject = edtSubject.getText().toString().trim();
-        String budget = edtBudget.getText().toString().trim();
+        long budget = edtBudget.getText().toString().trim().isEmpty() ? 0 : Long.parseLong(edtBudget.getText().toString().trim());
         String postType = radioPostType.getCheckedRadioButtonId() == R.id.radioNeed ? "need" : "offer";
         int spTypeId = radioSupportType.getCheckedRadioButtonId();
         String supportType = null;
@@ -172,12 +172,12 @@ public class NewPostActivity extends BaseActivity {
 
         Post post = new Post();
         post.setUserId(user.getId());
-        post.setName(user.getName());
-        post.setAvtURL(user.getAvtURL());
+        post.setUserName(user.getName());
+        post.setUserAvtURL(user.getAvtURL());
         post.setTitle(title);
         post.setDescription(description);
         post.setSubject(subject);
-        post.setFee(budget);
+        post.setBudget(budget);
         post.setPostType(postType);
         post.setSupportType(supportType);
 

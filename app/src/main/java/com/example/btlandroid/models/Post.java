@@ -1,85 +1,56 @@
 package com.example.btlandroid.models;
 
+import com.google.firebase.firestore.ServerTimestamp;
+
+import java.util.Date;
+
 public class Post implements java.io.Serializable {
-    private String id; // id củ bảng post
-    private String userId; // id của user lưu trong bảng post trong db
-    private String name; // nối bảng user với post rồi lấy trường name của user
-    private String avtURL; // nối bảng user với post rồi lấy trường name của user
-    private String title; // title bài post
-    private String description; // mô tả chi tiết bài viết
+    private String id;
+    private String userId;
+    private String userName;
+    private String userAvtURL;
+    private String title;
+    private String description;
     private String subject; // môn học, kỹ năng, chuyên môn ...
-    private String time; // là create at, không để người dùng nhập mà code tự động tạo để hiển thị
-    private String fee; // budget của người cần giúp đỡ hoặc mức mong muốn của người offer
-    private String supportType; // online, offline, zoom, meet ....
-    private String postType; // need hoặc offer để phân biệt người cần giúp và người giúp đỡ
+    @ServerTimestamp
+    private Date createdAt;
+    private long budget;
+    private String supportType; // online, offline, other
+    private String postType; // need hoặc offer
 
     public Post() {
         // Empty constructor for Firebase
     }
 
-    public Post(String id, String userId, String name, String avtURL, String title, String description, String subject,
-                String time, String fee, String supportType, String postType) {
-        this.id = id;
-        this.userId = userId;
-        this.name = name;
-        this.avtURL = avtURL;
-        this.title = title;
+    public Post(long budget, Date createdAt, String description, String id, String postType, String subject, String supportType, String title, String userAvtURL, String userId, String userName) {
+        this.budget = budget;
+        this.createdAt = createdAt;
         this.description = description;
-        this.subject = subject;
-        this.time = time;
-        this.fee = fee;
-        this.supportType = supportType;
+        this.id = id;
         this.postType = postType;
+        this.subject = subject;
+        this.supportType = supportType;
+        this.title = title;
+        this.userAvtURL = userAvtURL;
+        this.userId = userId;
+        this.userName = userName;
     }
-
     // Getters and Setters
 
-    public String getId() {
-        return id;
+    public long getBudget() {
+        return budget;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setBudget(long budget) {
+        this.budget = budget;
     }
 
-    public String getAvtURL() {
-        return avtURL;
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public void setAvtURL(String avtUrl) {
-        this.avtURL = avtUrl;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPostType() {
-        return postType;
-    }
-
-    public void setPostType(String postType) {
-        this.postType = postType;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
     public String getDescription() {
@@ -90,6 +61,22 @@ public class Post implements java.io.Serializable {
         this.description = description;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getPostType() {
+        return postType;
+    }
+
+    public void setPostType(String postType) {
+        this.postType = postType;
+    }
+
     public String getSubject() {
         return subject;
     }
@@ -98,27 +85,43 @@ public class Post implements java.io.Serializable {
         this.subject = subject;
     }
 
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
-    public String getFee() {
-        return fee;
-    }
-
-    public void setFee(String fee) {
-        this.fee = fee;
-    }
-
     public String getSupportType() {
         return supportType;
     }
 
     public void setSupportType(String supportType) {
         this.supportType = supportType;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getUserAvtURL() {
+        return userAvtURL;
+    }
+
+    public void setUserAvtURL(String userAvtURL) {
+        this.userAvtURL = userAvtURL;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }
