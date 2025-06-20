@@ -87,8 +87,8 @@ public class PostService {
                 for (Post post : allPosts) {
                     User user = userMap.get(post.getUserId());
                     if (user != null) {
-                        post.setName(user.getName());
-                        post.setAvtURL(user.getAvtURL());
+                        post.setUserName(user.getName());
+                        post.setUserAvtURL(user.getAvtURL());
                     }
                     if ("need".equals(post.getPostType())) {
                         needPosts.add(post);

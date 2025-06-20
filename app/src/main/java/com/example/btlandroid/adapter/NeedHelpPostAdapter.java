@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.btlandroid.R;
 import com.example.btlandroid.models.Post;
 import com.example.btlandroid.ui.post.PostDetailActivity;
+import com.example.btlandroid.utils.Util;
 
 import java.util.List;
 
@@ -34,11 +35,11 @@ public class NeedHelpPostAdapter extends RecyclerView.Adapter<NeedHelpPostAdapte
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Post post = postList.get(position);
 
-        holder.tvUserName.setText(post.getName());
+        holder.tvUserName.setText(post.getUserName());
         holder.tvTitle.setText(post.getTitle());
         holder.tvDescription.setText(post.getDescription());
-        holder.tvFee.setText(post.getFee());
-        holder.tvTime.setText(post.getTime());
+        holder.tvFee.setText(String.valueOf(post.getBudget()));
+        holder.tvTime.setText(Util.parseTime(post.getCreatedAt()));
 
         // Join subjects with comma
         if (post.getSubject() != null && !post.getSubject().isEmpty()) {
