@@ -41,10 +41,11 @@ dependencies {
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
+    implementation(libs.navigation.fragment)
+    implementation(libs.navigation.ui)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.auth)
     implementation(libs.firebase.firestore)
@@ -52,4 +53,5 @@ dependencies {
     annotationProcessor (libs.compiler)
     implementation (libs.commons.lang3)
     implementation(libs.gson)
+    implementation("com.google.firebase:firebase-analytics")
 }
