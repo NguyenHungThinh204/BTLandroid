@@ -21,6 +21,7 @@ import com.example.btlandroid.adapter.OfferHelpPostAdapter;
 import com.example.btlandroid.adapter.PostGridAdapter;
 import com.example.btlandroid.component.SearchActionsComponent;
 import com.example.btlandroid.models.Post;
+import com.example.btlandroid.ui.CommingSoonActivity;
 import com.example.btlandroid.ui.post.NewPostActivity;
 
 import java.util.ArrayList;
@@ -134,9 +135,10 @@ public class HomeFragmentUpdated extends Fragment implements SearchActionsCompon
     @Override
     public void onConnectClick() {
         // TODO: Implement connect functionality
-        // For now, return to default view
-        searchActionsComponent.setSelectedAction(SearchActionsComponent.ActionType.HOME);
-        showDefaultContent();
+//        // For now, return to default view
+//        searchActionsComponent.setSelectedAction(SearchActionsComponent.ActionType.HOME);
+//        showDefaultContent();
+        startActivity(new Intent(getContext(), CommingSoonActivity.class));
     }
 
     @Override
