@@ -87,8 +87,8 @@ public class PostDetailActivity extends BaseActivity {
         tvPostTitle.setText(currentPost.getTitle());
         tvUserName.setText(currentPost.getUserName());
         tvDescription.setText(currentPost.getDescription());
-        tvFee.setText(String.valueOf(currentPost.getBudget()));
-        tvSupportType.setText(currentPost.getSupportType());
+        tvFee.setText(Util.parseBudget(currentPost.getBudget()));
+        tvSupportType.setText(Util.parseSpType(currentPost.getSupportType()));
 
         // Format and display post date
         String formattedDate = "Đã đăng: " + Util.parseTime(currentPost.getCreatedAt());

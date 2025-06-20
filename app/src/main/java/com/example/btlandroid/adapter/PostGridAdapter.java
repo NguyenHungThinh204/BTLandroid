@@ -38,7 +38,7 @@ public class PostGridAdapter extends RecyclerView.Adapter<PostGridAdapter.ViewHo
         holder.tvUserName.setText(post.getUserName());
         holder.tvTitle.setText(post.getTitle());
         holder.tvDescription.setText(post.getDescription());
-        holder.tvFee.setText(String.valueOf(post.getBudget()));
+        holder.tvFee.setText(Util.parseBudget(post.getBudget()));
         holder.tvTime.setText(Util.parseTime(post.getCreatedAt()));
         holder.tvSubjects.setText(post.getSubject());
 

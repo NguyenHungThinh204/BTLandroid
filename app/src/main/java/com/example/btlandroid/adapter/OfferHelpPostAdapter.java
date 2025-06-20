@@ -37,9 +37,9 @@ public class OfferHelpPostAdapter extends RecyclerView.Adapter<OfferHelpPostAdap
         holder.tvUserName.setText(post.getUserName());
         holder.tvTitle.setText(post.getTitle());
         holder.tvDescription.setText(post.getDescription());
-        holder.tvFee.setText(String.valueOf(post.getBudget()));
+        holder.tvFee.setText(Util.parseBudget(post.getBudget()));
         holder.tvTime.setText(Util.parseTime(post.getCreatedAt()));
-        holder.tvSupportType.setText(post.getSupportType());
+        holder.tvSupportType.setText(Util.parseSpType(post.getSupportType()));
 
         // Join subjects with comma
         if (post.getSubject() != null && !post.getSubject().isEmpty()) {

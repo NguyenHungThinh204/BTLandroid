@@ -1,5 +1,6 @@
 package com.example.btlandroid.utils;
 
+import java.text.DecimalFormat;
 import java.util.Date;
 
 public class Util {
@@ -23,5 +24,19 @@ public class Util {
         }
 
         return timeAgo;
+    }
+
+    public static String parseSpType(String spType) {
+        switch (spType) {
+            case "online": spType = "Online (Zoom, Meet,...)"; break;
+            case "offline": spType = "Offline (trao đổi sau)"; break;
+            case "other": spType = "Thỏa thuận"; break;
+        }
+        return spType;
+    }
+
+    public static String parseBudget(long budget) {
+        DecimalFormat formatter = new DecimalFormat("#,###");
+        return formatter.format(budget) + " VND/giờ";
     }
 }
