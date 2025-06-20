@@ -66,7 +66,10 @@ public class ProfileActivity extends BaseActivity {
 
     private void fillData() {
         if (!StringUtils.isBlank(currentUser.getAvtURL())) {
-            Glide.with(this).load(currentUser.getAvtURL()).into(imgAvatar);
+            Glide.with(this).load(currentUser.getAvtURL())
+                    .placeholder(R.drawable.person_24dp)
+                    .error(R.drawable.person_24dp)
+                    .into(imgAvatar);
         }
         if (!StringUtils.isBlank(currentUser.getName())) {
             tvName.setText(currentUser.getName());
