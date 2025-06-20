@@ -1,20 +1,14 @@
 package com.example.btlandroid;
-import static androidx.core.content.ContextCompat.startActivity;
 
-import com.example.btlandroid.LichSuDangBaiActivity;
-import com.example.btlandroid.LichSuDanhGiaActivity;
-import com.example.btlandroid.LichSuTuongTacActivity;
+import com.example.btlandroid.ui.connect.KetNoiCongDongActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,8 +33,8 @@ public class TrangChuActivity extends AppCompatActivity {
         btnChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(TrangChuActivity.this, KetNoiActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(TrangChuActivity.this, KetNoiActivity.class);
+//                startActivity(intent);
             }
         });
 

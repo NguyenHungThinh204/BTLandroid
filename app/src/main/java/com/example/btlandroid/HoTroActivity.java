@@ -42,8 +42,8 @@ public class HoTroActivity extends AppCompatActivity {
         btnChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HoTroActivity.this, KetNoiActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(HoTroActivity.this, KetNoiActivity.class);
+//                startActivity(intent);
             }
         });
     }

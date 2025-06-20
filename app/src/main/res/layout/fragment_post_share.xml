@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".PostShareFragment">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?>&#xA;&lt;FrameLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&#xA;    xmlns:tools=&quot;http://schemas.android.com/tools&quot;&#xA;    android:layout_width=&quot;match_parent&quot;&#xA;    android:layout_height=&quot;match_parent&quot;&#xA;    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;&#xA;    tools:context=&quot;.PostShareFragment&quot;>&#xA;&#xA;    &lt;androidx.constraintlayout.widget.ConstraintLayout&#xA;        android:layout_width=&quot;match_parent&quot;&#xA;        android:layout_height=&quot;match_parent&quot;&#xA;        android:background=&quot;#F5F5F5&quot;&#xA;        android:padding=&quot;16dp&quot;>&#xA;&#xA;        &lt;!-- Back Arrow -->&#xA;        &lt;ImageButton&#xA;            android:id=&quot;@+id/backButton&quot;&#xA;            android:layout_width=&quot;wrap_content&quot;&#xA;            android:layout_height=&quot;wrap_content&quot;&#xA;            android:layout_marginTop=&quot;8dp&quot;&#xA;            android:background=&quot;?attr/selectableItemBackground&quot;&#xA;            android:src=&quot;@drawable/arrow_back&quot;&#xA;            app:layout_constraintStart_toStartOf=&quot;parent&quot;&#xA;            app:layout_constraintTop_toTopOf=&quot;parent&quot; />&#xA;&#xA;        &lt;!-- Title Section -->&#xA;        &lt;TextView&#xA;            android:id=&quot;@+id/titleText&quot;&#xA;            android:layout_width=&quot;0dp&quot;&#xA;            android:layout_height=&quot;wrap_content&quot;&#xA;            android:layout_marginStart=&quot;16dp&quot;&#xA;            android:layout_marginTop=&quot;8dp&quot;&#xA;            android:text=&quot;ĐĂNG TIN CHIA SẺ KỸ NĂNG&quot;&#xA;            android:textColor=&quot;#333333&quot;&#xA;            android:textSize=&quot;24sp&quot;&#xA;            android:textStyle=&quot;bold&quot;&#xA;            app:layout_constraintEnd_toEndOf=&quot;parent&quot;&#xA;            app:layout_constraintStart_toEndOf=&quot;@id/backButton&quot;&#xA;            app:layout_constraintTop_toTopOf=&quot;parent&quot; />&#xA;&#xA;        &lt;!-- Label for Title -->&#xA;        &lt;TextView&#xA;            android:id=&quot;@+id/labelTitle&quot;&#xA;            android:layout_width=&quot;wrap_content&quot;&#xA;            android:layout_height=&quot;wrap_content&quot;&#xA;            android:text=&quot;Tiêu đề&quot;&#xA;            android:textColor=&quot;#333333&quot;&#xA;            android:textSize=&quot;16sp&quot;&#xA;            android:layout_marginTop=&quot;8dp&quot;&#xA;            app:layout_constraintTop_toBottomOf=&quot;@id/titleText&quot;&#xA;            app:layout_constraintStart_toStartOf=&quot;parent&quot; />&#xA;&#xA;        &lt;!-- Input for Title -->&#xA;        &lt;com.google.android.material.textfield.TextInputLayout&#xA;            android:id=&quot;@+id/titleInputLayout&quot;&#xA;            android:layout_width=&quot;0dp&quot;&#xA;            android:layout_height=&quot;wrap_content&quot;&#xA;            android:layout_marginTop=&quot;4dp&quot;&#xA;            app:boxBackgroundColor=&quot;#FFFFFF&quot;&#xA;            app:boxStrokeColor=&quot;#B0BEC5&quot;&#xA;            app:layout_constraintEnd_toEndOf=&quot;parent&quot;&#xA;            app:layout_constraintStart_toStartOf=&quot;parent&quot;&#xA;            app:layout_constraintTop_toBottomOf=&quot;@id/labelTitle&quot;>&#xA;&#xA;            &lt;com.google.android.material.textfield.TextInputEditText&#xA;                android:id=&quot;@+id/titleInput&quot;&#xA;                android:layout_width=&quot;match_parent&quot;&#xA;                android:layout_height=&quot;wrap_content&quot;&#xA;                android:hint=&quot;Hướng dẫn thuyết trình hiệu quả&quot;&#xA;                android:inputType=&quot;text&quot;&#xA;                android:padding=&quot;12dp&quot;&#xA;                android:textColor=&quot;#000000&quot;&#xA;                android:textSize=&quot;16sp&quot; />&#xA;        &lt;/com.google.android.material.textfield.TextInputLayout>&#xA;&#xA;        &lt;!-- Label for Description -->&#xA;        &lt;TextView&#xA;            android:id=&quot;@+id/labelDescription&quot;&#xA;            android:layout_width=&quot;wrap_content&quot;&#xA;            android:layout_height=&quot;wrap_content&quot;&#xA;            android:text=&quot;Mô tả chi tiết&quot;&#xA;            android:textColor=&quot;#333333&quot;&#xA;            android:textSize=&quot;16sp&quot;&#xA;            android:layout_marginTop=&quot;8dp&quot;&#xA;            app:layout_constraintTop_toBottomOf=&quot;@id/titleInputLayout&quot;&#xA;            app:layout_constraintStart_toStartOf=&quot;parent&quot; />&#xA;&#xA;        &lt;!-- Input for Description -->&#xA;        &lt;com.google.android.material.textfield.TextInputLayout&#xA;            android:id=&quot;@+id/descriptionInputLayout&quot;&#xA;            android:layout_width=&quot;0dp&quot;&#xA;            android:layout_height=&quot;wrap_content&quot;&#xA;            android:layout_marginTop=&quot;4dp&quot;&#xA;            app:boxBackgroundColor=&quot;#FFFFFF&quot;&#xA;            app:boxStrokeColor=&quot;#B0BEC5&quot;&#xA;            app:layout_constraintEnd_toEndOf=&quot;parent&quot;&#xA;            app:layout_constraintStart_toStartOf=&quot;parent&quot;&#xA;            app:layout_constraintTop_toBottomOf=&quot;@id/labelDescription&quot;>&#xA;&#xA;            &lt;com.google.android.material.textfield.TextInputEditText&#xA;                android:id=&quot;@+id/descriptionInput&quot;&#xA;                android:layout_width=&quot;match_parent&quot;&#xA;                android:layout_height=&quot;wrap_content&quot;&#xA;                android:hint=&quot;Mô tả phương pháp, kinh nghiệm...&quot;&#xA;                android:inputType=&quot;textMultiLine&quot;&#xA;                android:minLines=&quot;3&quot;&#xA;                android:padding=&quot;12dp&quot;&#xA;                android:textColor=&quot;#000000&quot;&#xA;                android:textSize=&quot;16sp&quot; />&#xA;        &lt;/com.google.android.material.textfield.TextInputLayout>&#xA;&#xA;        &lt;!-- Label for Skill -->&#xA;        &lt;TextView&#xA;            android:id=&quot;@+id/labelSkill&quot;&#xA;            android:layout_width=&quot;wrap_content&quot;&#xA;            android:layout_height=&quot;wrap_content&quot;&#xA;            android:text=&quot;Gắn thẻ kỹ năng môn học&quot;&#xA;            android:textColor=&quot;#333333&quot;&#xA;            android:textSize=&quot;16sp&quot;&#xA;            android:layout_marginTop=&quot;8dp&quot;&#xA;            app:layout_constraintTop_toBottomOf=&quot;@id/descriptionInputLayout&quot;&#xA;            app:layout_constraintStart_toStartOf=&quot;parent&quot; />&#xA;&#xA;        &lt;!-- Spinner for Skill with Enhanced Border -->&#xA;        &lt;com.google.android.material.textfield.TextInputLayout&#xA;            android:id=&quot;@+id/skillInputLayout&quot;&#xA;            android:layout_width=&quot;0dp&quot;&#xA;            android:layout_height=&quot;wrap_content&quot;&#xA;            android:layout_marginTop=&quot;4dp&quot;&#xA;            app:boxBackgroundColor=&quot;#FFFFFF&quot;&#xA;            app:boxStrokeColor=&quot;#B0BEC5&quot;&#xA;            app:boxStrokeWidth=&quot;2dp&quot; &lt;!-- Increased border width for visibility -->&#xA;            app:endIconMode=&quot;dropdown&quot;&#xA;            app:layout_constraintEnd_toEndOf=&quot;parent&quot;&#xA;            app:layout_constraintStart_toStartOf=&quot;parent&quot;&#xA;            app:layout_constraintTop_toBottomOf=&quot;@id/labelSkill&quot;>&#xA;&#xA;            &lt;Spinner&#xA;                android:id=&quot;@+id/skillDropdown&quot;&#xA;                android:layout_width=&quot;match_parent&quot;&#xA;                android:layout_height=&quot;wrap_content&quot;&#xA;                android:backgroundTint=&quot;#B0BEC5&quot;&#xA;                android:padding=&quot;12dp&quot;&#xA;                android:spinnerMode=&quot;dropdown&quot; />&#xA;        &lt;/com.google.android.material.textfield.TextInputLayout>&#xA;&#xA;        &lt;!-- Label for Time Assistance -->&#xA;        &lt;TextView&#xA;            android:id=&quot;@+id/labelTimeSupport&quot;&#xA;            android:layout_width=&quot;wrap_content&quot;&#xA;            android:layout_height=&quot;wrap_content&quot;&#xA;            android:text=&quot;Thời gian hỗ trợ&quot;&#xA;            android:textColor=&quot;#333333&quot;&#xA;            android:textSize=&quot;16sp&quot;&#xA;            android:layout_marginTop=&quot;8dp&quot;&#xA;            app:layout_constraintTop_toBottomOf=&quot;@id/skillInputLayout&quot;&#xA;            app:layout_constraintStart_toStartOf=&quot;parent&quot; />&#xA;&#xA;        &lt;!-- Input for Time Assistance -->&#xA;        &lt;com.google.android.material.textfield.TextInputLayout&#xA;            android:id=&quot;@+id/timeSupportInputLayout&quot;&#xA;            android:layout_width=&quot;0dp&quot;&#xA;            android:layout_height=&quot;wrap_content&quot;&#xA;            android:layout_marginTop=&quot;4dp&quot;&#xA;            app:boxBackgroundColor=&quot;#FFFFFF&quot;&#xA;            app:boxStrokeColor=&quot;#B0BEC5&quot;&#xA;            app:layout_constraintEnd_toEndOf=&quot;parent&quot;&#xA;            app:layout_constraintStart_toStartOf=&quot;parent&quot;&#xA;            app:layout_constraintTop_toBottomOf=&quot;@id/labelTimeSupport&quot;>&#xA;&#xA;            &lt;com.google.android.material.textfield.TextInputEditText&#xA;                android:id=&quot;@+id/timeSupportInput&quot;&#xA;                android:layout_width=&quot;match_parent&quot;&#xA;                android:layout_height=&quot;wrap_content&quot;&#xA;                android:inputType=&quot;datetime&quot;&#xA;                android:padding=&quot;12dp&quot;&#xA;                android:text=&quot;Tối thứ 2, 4, 6 - từ 19h đến 21h&quot;&#xA;                android:textColor=&quot;#000000&quot;&#xA;                android:textSize=&quot;16sp&quot; />&#xA;        &lt;/com.google.android.material.textfield.TextInputLayout>&#xA;&#xA;        &lt;!-- Label for Price -->&#xA;        &lt;TextView&#xA;            android:id=&quot;@+id/labelPrice&quot;&#xA;            android:layout_width=&quot;wrap_content&quot;&#xA;            android:layout_height=&quot;wrap_content&quot;&#xA;            android:text=&quot;Mức phí (nếu có)&quot;&#xA;            android:textColor=&quot;#333333&quot;&#xA;            android:textSize=&quot;16sp&quot;&#xA;            android:layout_marginTop=&quot;8dp&quot;&#xA;            app:layout_constraintTop_toBottomOf=&quot;@id/timeSupportInputLayout&quot;&#xA;            app:layout_constraintStart_toStartOf=&quot;parent&quot; />&#xA;&#xA;        &lt;!-- Input for Price -->&#xA;        &lt;com.google.android.material.textfield.TextInputLayout&#xA;            android:id=&quot;@+id/priceInputLayout&quot;&#xA;            android:layout_width=&quot;0dp&quot;&#xA;            android:layout_height=&quot;wrap_content&quot;&#xA;            android:layout_marginTop=&quot;4dp&quot;&#xA;            app:boxBackgroundColor=&quot;#FFFFFF&quot;&#xA;            app:boxStrokeColor=&quot;#B0BEC5&quot;&#xA;            app:layout_constraintEnd_toEndOf=&quot;parent&quot;&#xA;            app:layout_constraintStart_toStartOf=&quot;parent&quot;&#xA;            app:layout_constraintTop_toBottomOf=&quot;@id/labelPrice&quot;>&#xA;&#xA;            &lt;com.google.android.material.textfield.TextInputEditText&#xA;                android:id=&quot;@+id/priceInput&quot;&#xA;                android:layout_width=&quot;match_parent&quot;&#xA;                android:layout_height=&quot;wrap_content&quot;&#xA;                android:inputType=&quot;numberDecimal&quot;&#xA;                android:padding=&quot;12dp&quot;&#xA;                android:text=&quot;50000 VND/h&quot;&#xA;                android:textColor=&quot;#000000&quot;&#xA;                android:textSize=&quot;16sp&quot; />&#xA;        &lt;/com.google.android.material.textfield.TextInputLayout>&#xA;&#xA;        &lt;!-- Submit Button -->&#xA;        &lt;com.google.android.material.button.MaterialButton&#xA;            android:id=&quot;@+id/submitButton&quot;&#xA;            android:layout_width=&quot;179dp&quot;&#xA;            android:layout_height=&quot;54dp&quot;&#xA;            android:layout_marginTop=&quot;32dp&quot;&#xA;            android:backgroundTint=&quot;#D32F2F&quot;&#xA;            android:text=&quot;Đăng Tin&quot;&#xA;            android:textColor=&quot;#FFFFFF&quot;&#xA;            android:textSize=&quot;16sp&quot;&#xA;            app:cornerRadius=&quot;24dp&quot;&#xA;            app:icon=&quot;@android:drawable/ic_dialog_info&quot;&#xA;            app:iconGravity=&quot;textStart&quot;&#xA;            app:iconPadding=&quot;8dp&quot;&#xA;            app:layout_constraintEnd_toEndOf=&quot;parent&quot;&#xA;            app:layout_constraintStart_toStartOf=&quot;parent&quot;&#xA;            app:layout_constraintTop_toBottomOf=&quot;@id/priceInputLayout&quot; />&#xA;    &lt;/androidx.constraintlayout.widget.ConstraintLayout>&#xA;&lt;/FrameLayout>" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F5F5F5"
+        android:padding="16dp">
+
+        <!-- Back Arrow -->
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="?attr/selectableItemBackground"
+            android:src="@drawable/arrow_back_24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Title Section -->
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="ĐĂNG TIN CHIA SẺ KỸ NĂNG"
+            android:textColor="#333333"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/backButton"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Label for Title -->
+        <TextView
+            android:id="@+id/labelTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tiêu đề"
+            android:textColor="#333333"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/titleText"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- Input for Title -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/titleInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:boxBackgroundColor="#FFFFFF"
+            app:boxStrokeColor="#B0BEC5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelTitle">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/titleInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Hướng dẫn thuyết trình hiệu quả"
+                android:inputType="text"
+                android:padding="12dp"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Label for Description -->
+        <TextView
+            android:id="@+id/labelDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mô tả chi tiết"
+            android:textColor="#333333"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/titleInputLayout"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- Input for Description -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/descriptionInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:boxBackgroundColor="#FFFFFF"
+            app:boxStrokeColor="#B0BEC5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelDescription">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/descriptionInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Mô tả phương pháp, kinh nghiệm..."
+                android:inputType="textMultiLine"
+                android:minLines="3"
+                android:padding="12dp"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Label for Skill -->
+        <TextView
+            android:id="@+id/labelSkill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gắn thẻ kỹ năng môn học"
+            android:textColor="#333333"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/descriptionInputLayout"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- Spinner for Skill -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/skillInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:boxBackgroundColor="#FFFFFF"
+            app:boxStrokeColor="#B0BEC5"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelSkill">
+
+            <Spinner
+                android:id="@+id/skillDropdown"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#B0BEC5"
+                android:padding="12dp"
+                android:spinnerMode="dropdown" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Label for Time Assistance -->
+        <TextView
+            android:id="@+id/labelTimeSupport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thời gian hỗ trợ"
+            android:textColor="#333333"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/skillInputLayout"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- Input for Time Assistance -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/timeSupportInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:boxBackgroundColor="#FFFFFF"
+            app:boxStrokeColor="#B0BEC5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelTimeSupport">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/timeSupportInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="datetime"
+                android:padding="12dp"
+                android:text="Tối thứ 2, 4, 6 - từ 19h đến 21h"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Label for Price -->
+        <TextView
+            android:id="@+id/labelPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mức phí (nếu có)"
+            android:textColor="#333333"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/timeSupportInputLayout"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- Input for Price -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/priceInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:boxBackgroundColor="#FFFFFF"
+            app:boxStrokeColor="#B0BEC5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelPrice">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/priceInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:padding="12dp"
+                android:text="50000 VND/h"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Submit Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/submitButton"
+            android:layout_width="179dp"
+            android:layout_height="54dp"
+            android:layout_marginTop="32dp"
+            android:backgroundTint="#D32F2F"
+            android:text="Đăng Tin"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            app:cornerRadius="24dp"
+            app:icon="@android:drawable/ic_dialog_info"
+            app:iconGravity="textStart"
+            app:iconPadding="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/priceInputLayout" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

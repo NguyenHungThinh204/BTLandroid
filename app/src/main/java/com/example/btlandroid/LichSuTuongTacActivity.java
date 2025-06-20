@@ -41,8 +41,8 @@ public class LichSuTuongTacActivity extends AppCompatActivity {
         btnChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LichSuTuongTacActivity.this, KetNoiActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(LichSuTuongTacActivity.this, KetNoiActivity.class);
+//                startActivity(intent);
             }
         });
     }

@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.btlandroid.R;
-import com.example.btlandroid.model.Message;
+import com.example.btlandroid.models.Message;
 
 import java.util.Calendar;
 import java.util.List;

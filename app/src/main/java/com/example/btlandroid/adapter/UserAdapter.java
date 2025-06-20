@@ -10,9 +10,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.btlandroid.ChatActivity;
+import com.example.btlandroid.ui.chat.ChatActivity;
 import com.example.btlandroid.R;
-import com.example.btlandroid.model.User;
+import com.example.btlandroid.models.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,13 +53,13 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     @Override
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
         User user = displayList.get(position);
-        holder.txtUserName.setText(user.name);
+        holder.txtUserName.setText(user.getName());
 
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, ChatActivity.class);
             intent.putExtra("currentUserId", currentUserId);
-            intent.putExtra("receiverId", user.id);
-            intent.putExtra("receiverName", user.name);
+            intent.putExtra("receiverId", user.getId());
+            intent.putExtra("receiverName", user.getName());
             context.startActivity(intent);
         });
     }

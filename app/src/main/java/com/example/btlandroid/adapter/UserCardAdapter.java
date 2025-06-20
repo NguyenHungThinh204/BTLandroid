@@ -10,9 +10,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.btlandroid.ChatActivity;
+import com.example.btlandroid.ui.chat.ChatActivity;
 import com.example.btlandroid.R;
-import com.example.btlandroid.model.User;
+import com.example.btlandroid.models.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +46,7 @@ public class UserCardAdapter extends RecyclerView.Adapter<UserCardAdapter.UserVi
         } else {
             String lowerKeyword = keyword.toLowerCase();
             for (User user : fullUserList) {
-                if (user.name.toLowerCase().contains(lowerKeyword)) {
+                if (user.getName().toLowerCase().contains(lowerKeyword)) {
                     filteredList.add(user);
                 }
             }
@@ -64,14 +64,14 @@ public class UserCardAdapter extends RecyclerView.Adapter<UserCardAdapter.UserVi
     @Override
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
         User user = filteredList.get(position);
-        holder.txtName.setText(user.name);
-        holder.txtId.setText(user.id);
+        holder.txtName.setText(user.getName());
+        holder.txtId.setText(user.getId());
 
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, ChatActivity.class);
             intent.putExtra("currentUserId", currentUserId);
-            intent.putExtra("receiverId", user.id);
-            intent.putExtra("receiverName", user.name);
+            intent.putExtra("receiverId", user.getId());
+            intent.putExtra("receiverName", user.getName());
             context.startActivity(intent);
         });
     }

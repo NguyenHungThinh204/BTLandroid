@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".SkillShareApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -15,13 +16,44 @@
         android:theme="@style/Theme.Btlandroid"
         tools:targetApi="31">
         <activity
-            android:name=".TimKiemTrangChuActivity"
+            android:name=".ui.CommingSoonActivity"
             android:exported="false" />
         <activity
-            android:name=".ChatActivity"
+            android:name=".ui.post.NewPostActivity"
             android:exported="false" />
         <activity
-            android:name=".ChoKetNoiActivity"
+            android:name=".ui.auth.ForgotPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ErrorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.profile.EditProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.profile.ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.auth.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.auth.LoginActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:exported="false" />
+        <activity android:name=".ui.post.PostDetailActivity" />
+<!--        <activity-->
+<!--            android:name=".TimKiemTrangChuActivity"-->
+<!--            android:exported="false" />-->
+        <activity
+            android:name=".ui.chat.ChatActivity"
             android:exported="false" />
         <activity
             android:name=".LichSuTuongTacActivity"
@@ -33,35 +65,13 @@
             android:name=".LichSuDangBaiActivity"
             android:exported="false" />
         <activity
-            android:name=".KetNoiCongDongActivity"
+            android:name=".ui.connect.KetNoiCongDongActivity"
             android:exported="false" />
         <activity
             android:name=".HoTroActivity"
             android:exported="false" />
         <activity
             android:name=".CanHoTroActivity"
-            android:exported="false" />
-        <activity
-            android:name=".KetNoiActivity"
-            android:exported="false"
-            android:theme="@style/Theme.Btlandroid" />
-        <activity
-            android:name=".TrangChuActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Manhinhdangnhap"
-            android:exported="false" />
-        <activity
-            android:name=".Manhinhdangky"
             android:exported="false" />
     </application>
 
