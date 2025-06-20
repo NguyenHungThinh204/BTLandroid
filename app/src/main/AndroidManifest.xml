@@ -49,30 +49,27 @@
             android:name=".ui.main.MainActivity"
             android:exported="false" />
         <activity android:name=".ui.post.PostDetailActivity" />
-<!--        <activity-->
-<!--            android:name=".TimKiemTrangChuActivity"-->
-<!--            android:exported="false" />-->
         <activity
             android:name=".ui.chat.ChatActivity"
             android:exported="false" />
-        <activity
-            android:name=".LichSuTuongTacActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LichSuDanhGiaActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LichSuDangBaiActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.connect.KetNoiCongDongActivity"
-            android:exported="false" />
-        <activity
-            android:name=".HoTroActivity"
-            android:exported="false" />
-        <activity
-            android:name=".CanHoTroActivity"
-            android:exported="false" />
     </application>
+    <activity
+        android:name=".LichSuTuongTacActivity"
+        android:exported="false" />
+    <activity
+        android:name=".LichSuDanhGiaActivity"
+        android:exported="false" />
+    <activity
+        android:name=".LichSuDangBaiActivity"
+        android:exported="false" />
+    <activity
+        android:name=".ui.connect.KetNoiCongDongActivity"
+        android:exported="false" />
+    <activity
+        android:name=".HoTroActivity"
+        android:exported="false" />
+    <activity
+        android:name=".CanHoTroActivity"
+        android:exported="false" />
 
 </manifest>

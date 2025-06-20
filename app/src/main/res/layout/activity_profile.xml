@@ -39,7 +39,7 @@
         </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!--    <include layout="@layout/loading" />-->
+<!--    <include layout="@layout/loading" />-->
 
     <!-- Nội dung có thể cuộn -->
     <androidx.core.widget.NestedScrollView

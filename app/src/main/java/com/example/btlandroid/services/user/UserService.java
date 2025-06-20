@@ -17,6 +17,10 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 public class UserService {
     public LiveData<Result<User>> register(String email, String password) {
         MutableLiveData<Result<User>> liveData = new MutableLiveData<>();

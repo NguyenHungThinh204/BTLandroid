@@ -26,6 +26,7 @@ import com.example.btlandroid.models.Post;
 import com.example.btlandroid.ui.post.NewPostActivity;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class HomeFragmentUpdated extends Fragment implements SearchActionsComponent.OnActionClickListener {
