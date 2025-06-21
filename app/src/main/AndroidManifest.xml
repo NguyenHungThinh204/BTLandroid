@@ -51,6 +51,7 @@
         <activity android:name=".ui.post.PostDetailActivity" />
         <activity
             android:name=".ui.chat.ChatActivity"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false" />
         <activity
             android:name=".LichSuTuongTacActivity"

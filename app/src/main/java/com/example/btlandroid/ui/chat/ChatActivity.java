@@ -56,14 +56,7 @@ public class ChatActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(com.example.btlandroid.R.layout.activity_chat);
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(com.example.btlandroid.R.id.chatLayout), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
 
         // Nhận intent
         currentUserId = getIntent().getStringExtra("currentUserId");
