@@ -14,6 +14,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -24,6 +25,10 @@ import java.util.Objects;
 public class UserService {
     public LiveData<Result<User>> register(String email, String password) {
         MutableLiveData<Result<User>> liveData = new MutableLiveData<>();
+        if (!email.endsWith("@e.tlu.edu.vn") && !email.endsWith("@tlu.edu.vn")) {
+            liveData.setValue(Result.error("Email không hợp lệ!"));
+            return liveData;
+        }
         liveData.setValue(Result.loading());
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
@@ -38,6 +43,10 @@ public class UserService {
                         if (e instanceof FirebaseAuthUserCollisionException) {
                             // Email đã tồn tại
                             liveData.setValue(Result.error("Email đã tồn tại!"));
+                        } else if (e instanceof FirebaseNetworkException) {
+                            liveData.setValue(Result.error("Vui lòng kiểm tra kết nối mạng của bạn!"));
+                        } else if (e instanceof FirebaseAuthWeakPasswordException) {
+                            liveData.setValue(Result.error("Mật khẩu tối thiểu 6 ký tự!"));
                         } else {
                             liveData.setValue(Result.error("Đăng ký thất bại!"));
                         }
@@ -61,6 +70,11 @@ public class UserService {
                             return;
                         }
                         liveData.setValue(Result.success(new User(user.getUid())));
+                        System.err.println(user.getMetadata().getCreationTimestamp() + " " + user.getMetadata().getLastSignInTimestamp());
+                        if (user.getMetadata() != null && user.getMetadata().getCreationTimestamp() == user.getMetadata().getLastSignInTimestamp()) {
+                            SharedPrefUtil.putInt("firstLogin", 1);
+                            SharedPrefUtil.putString("userEmail", user.getEmail());
+                        }
                     } else {
                         Exception e = task.getException();
                         String msg;
@@ -123,7 +137,8 @@ public class UserService {
                         }
                         liveData.setValue(Result.success(new UserDetail(user)));
                     } else {
-                        liveData.setValue(Result.error("Đã có lỗi xảy ra!"));
+                        SharedPrefUtil.putInt("firstLogin", 1);
+                        liveData.setValue(Result.success(null, ""));
                     }
                 })
                 .addOnFailureListener(e -> {

@@ -13,6 +13,7 @@ import com.example.btlandroid.models.User;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -57,7 +58,7 @@ public class PostService {
     public void getAllPostsWithUser(final PostListCallback callback) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         CollectionReference postRef = db.collection("posts");
-        postRef.get().addOnSuccessListener(postSnapshots -> {
+        postRef.orderBy("createdAt", Query.Direction.DESCENDING).get().addOnSuccessListener(postSnapshots -> {
             List<Post> needPosts = new ArrayList<>();
             List<Post> offerPosts = new ArrayList<>();
             List<Post> allPosts = new ArrayList<>();

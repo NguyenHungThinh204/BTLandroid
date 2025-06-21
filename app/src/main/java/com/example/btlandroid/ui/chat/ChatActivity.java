@@ -24,12 +24,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.btlandroid.R;
 import com.example.btlandroid.adapter.ChatAdapter;
 import com.example.btlandroid.models.Message;
+import com.example.btlandroid.ui.BaseActivity;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.*;
 
 import java.util.*;
 
-public class ChatActivity extends AppCompatActivity {
+public class ChatActivity extends BaseActivity {
 
     private RecyclerView recyclerView;
     private EditText edtMessage;

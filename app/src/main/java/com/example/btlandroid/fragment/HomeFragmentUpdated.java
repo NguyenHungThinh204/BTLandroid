@@ -3,6 +3,7 @@ package com.example.btlandroid.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,7 @@ import com.example.btlandroid.adapter.OfferHelpPostAdapter;
 import com.example.btlandroid.adapter.PostGridAdapter;
 import com.example.btlandroid.component.SearchActionsComponent;
 import com.example.btlandroid.models.Post;
+import com.example.btlandroid.ui.main.MainActivity;
 import com.example.btlandroid.ui.post.NewPostActivity;
 
 import java.util.ArrayList;
@@ -74,6 +76,8 @@ public class HomeFragmentUpdated extends Fragment implements SearchActionsCompon
             @Override
             public void onError(Exception e) {
                 // Xử lý lỗi, ví dụ: Toast.makeText(getContext(), "Lỗi tải dữ liệu: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Đã có lỗi xảy ra. Vui lòng thử lại sau!", Toast.LENGTH_SHORT).show();
+                Log.e("HomeFragment", "Lỗi tải dữ liệu: " + e.getMessage());
             }
         });
     }
@@ -136,6 +140,7 @@ public class HomeFragmentUpdated extends Fragment implements SearchActionsCompon
     @Override
     public void onConnectClick() {
         startActivity(new Intent(getContext(), KetNoiCongDongActivity.class));
+        onReloadClick();
     }
 
     @Override
@@ -150,7 +155,6 @@ public class HomeFragmentUpdated extends Fragment implements SearchActionsCompon
 
     @Override
     public void onReloadClick() {
-        Toast.makeText(getContext(), "Làm mới dữ liệu...", Toast.LENGTH_SHORT).show();
         flDynamicContent.removeAllViews();
         loadPostsFromFirestore();
     }

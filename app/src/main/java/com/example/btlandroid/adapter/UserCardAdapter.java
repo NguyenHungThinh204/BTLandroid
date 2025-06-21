@@ -65,7 +65,7 @@ public class UserCardAdapter extends RecyclerView.Adapter<UserCardAdapter.UserVi
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
         User user = filteredList.get(position);
         holder.txtName.setText(user.getName());
-        holder.txtId.setText(user.getId());
+        holder.txtPhone.setText(user.getPhone());
 
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, ChatActivity.class);
@@ -82,12 +82,12 @@ public class UserCardAdapter extends RecyclerView.Adapter<UserCardAdapter.UserVi
     }
 
     public static class UserViewHolder extends RecyclerView.ViewHolder {
-        TextView txtName, txtId;
+        TextView txtName, txtPhone;
 
         public UserViewHolder(@NonNull View itemView) {
             super(itemView);
             txtName = itemView.findViewById(R.id.txtUserName);
-            txtId = itemView.findViewById(R.id.txtUserId);
+            txtPhone = itemView.findViewById(R.id.txtPhone);
         }
     }
 }

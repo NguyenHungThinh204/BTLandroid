@@ -58,87 +58,106 @@
 
             <!-- Các trường dữ liệu -->
             <!-- Họ tên -->
-            <!--            <TextView-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_marginBottom="8dp"-->
-            <!--                android:text="Họ tên"-->
-            <!--                android:textColor="@color/black"-->
-            <!--                android:textStyle="bold"-->
-            <!--                android:textSize="16sp"/>-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Họ tên"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
-            <!--            <EditText-->
-            <!--                android:id="@+id/edtName"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="42dp"-->
-            <!--                android:layout_marginBottom="16dp"-->
-            <!--                android:autofillHints="name"-->
-            <!--                android:background="@drawable/rounded_edit_text"-->
-            <!--                android:inputType="text"-->
-            <!--                android:paddingHorizontal="16dp"-->
-            <!--                android:textColor="@color/black" />-->
+            <EditText
+                android:id="@+id/edtName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:autofillHints="name"
+                android:background="@drawable/rounded_edit_text"
+                android:inputType="text"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="8dp"
+                android:textColor="@color/black" />
 
             <!-- Chức vụ -->
-            <!--            <TextView-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_marginBottom="8dp"-->
-            <!--                android:text="Chức vụ"-->
-            <!--                android:textColor="@color/black"-->
-            <!--                android:textStyle="bold"-->
-            <!--                android:textSize="16sp"/>-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Chức vụ"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
-            <!--            <com.google.android.material.textfield.TextInputLayout-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="42dp"-->
-            <!--                android:layout_marginBottom="16dp"-->
-            <!--                app:boxStrokeColor="@color/black"-->
-            <!--                android:background="@drawable/rounded_edit_text"-->
-            <!--                app:boxCornerRadiusTopStart="24dp"-->
-            <!--                app:boxCornerRadiusTopEnd="24dp"-->
-            <!--                app:boxCornerRadiusBottomStart="24dp"-->
-            <!--                app:boxCornerRadiusBottomEnd="24dp">-->
+            <RadioGroup
+                android:id="@+id/rgPosition"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:orientation="horizontal"
+                android:paddingHorizontal="30dp">
 
-            <!--                <AutoCompleteTextView-->
-            <!--                    android:id="@+id/edtPosition"-->
-            <!--                    android:layout_width="match_parent"-->
-            <!--                    android:layout_height="42dp"-->
-            <!--                    android:background="@android:color/transparent"-->
-            <!--                    android:paddingHorizontal="16dp"-->
-            <!--                    android:textColor="@color/black"-->
-            <!--                    android:inputType="none"-->
-            <!--                    android:focusable="false"-->
-            <!--                    android:drawableEnd="@drawable/keyboard_arrow_down_24dp" />-->
-            <!--            </com.google.android.material.textfield.TextInputLayout>-->
+                <RadioButton
+                    android:id="@+id/rbStudent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:buttonTint="@color/black"
+                    android:text="Sinh viên"
+                    android:textColor="@color/black" />
 
+                <RadioButton
+                    android:id="@+id/rbTeacher"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:buttonTint="@color/black"
+                    android:text="Giảng viên"
+                    android:textColor="@color/black" />
+            </RadioGroup>
 
             <!-- Lớp/ĐVCT -->
-            <!--            <TextView-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_marginBottom="8dp"-->
-            <!--                android:text="Lớp/ĐVCT"-->
-            <!--                android:textColor="@color/black"-->
-            <!--                android:textStyle="bold"-->
-            <!--                android:textSize="16sp"/>-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Lớp/Đơn vị công tác"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
-            <!--            <EditText-->
-            <!--                android:id="@+id/edtDepartment"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="42dp"-->
-            <!--                android:layout_marginBottom="16dp"-->
-            <!--                android:autofillHints="text"-->
-            <!--                android:background="@drawable/rounded_edit_text"-->
-            <!--                android:inputType="text"-->
-            <!--                android:paddingHorizontal="16dp"-->
-            <!--                android:textColor="@color/black" />-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/departmentInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:endIconMode="dropdown_menu"
+                android:background="@drawable/rounded_edit_text"
+                app:boxBackgroundMode="outline"
+                app:boxCornerRadiusTopStart="24dp"
+                app:boxCornerRadiusTopEnd="24dp"
+                app:boxCornerRadiusBottomStart="24dp"
+                app:boxCornerRadiusBottomEnd="24dp"
+                app:boxStrokeColor="@color/black">
+
+                <AutoCompleteTextView
+                    android:id="@+id/selectDepartment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:paddingHorizontal="16dp"
+                    android:textColor="@color/black"
+                    android:inputType="none"
+                    android:focusable="false"
+                    android:hint="Chọn lớp/đơn vị" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Kỹ năng -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="Kỹ năng"
+                android:text="Kỹ năng có thể chia sẻ"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -153,7 +172,8 @@
                 android:gravity="top|start"
                 android:inputType="textMultiLine"
                 android:maxLines="5"
-                android:minLines="3"
+                android:minLines="1"
+                android:paddingVertical="8dp"
                 android:paddingHorizontal="16dp"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
@@ -163,7 +183,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="Môn học đang tìm"
+                android:text="Môn học đang tìm kiếm"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -171,11 +191,15 @@
             <EditText
                 android:id="@+id/edtSubject"
                 android:layout_width="match_parent"
-                android:layout_height="42dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:autofillHints="name"
                 android:background="@drawable/rounded_edit_text"
-                android:inputType="text"
+                android:gravity="top|start"
+                android:inputType="textMultiLine"
+                android:maxLines="5"
+                android:minLines="1"
+                android:paddingVertical="8dp"
                 android:paddingHorizontal="16dp"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
@@ -185,7 +209,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="Liên hệ"
+                android:text="Thông tin liên hệ"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -193,53 +217,21 @@
             <EditText
                 android:id="@+id/edtContact"
                 android:layout_width="match_parent"
-                android:layout_height="42dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:autofillHints="name"
                 android:background="@drawable/rounded_edit_text"
                 android:inputType="text"
                 android:paddingHorizontal="16dp"
+                android:paddingVertical="8dp"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Có thể trợ giúp"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <RadioGroup
-                android:id="@+id/radioStatus"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
                 android:layout_marginBottom="8dp"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/radioAvailable"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="36dp"
-                    android:text="Sẵn sàng"
-                    android:textSize="16sp" />
-
-                <RadioButton
-                    android:id="@+id/radioNotAvailable"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Không sẵn sàng"
-                    android:textSize="16sp" />
-            </RadioGroup>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="Giới thiệu"
+                android:text="Thông tin giới thiệu"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -253,9 +245,10 @@
                 android:background="@drawable/rounded_edit_text"
                 android:gravity="top|start"
                 android:inputType="textMultiLine"
-                android:maxLines="24"
-                android:minLines="8"
+                android:maxLines="15"
+                android:minLines="6"
                 android:paddingHorizontal="16dp"
+                android:paddingVertical="8dp"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 

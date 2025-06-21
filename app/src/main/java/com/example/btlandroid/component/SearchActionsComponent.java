@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
+
 import com.example.btlandroid.R;
 
 public class SearchActionsComponent extends LinearLayout {
@@ -81,7 +83,7 @@ public class SearchActionsComponent extends LinearLayout {
 
         btnConnect.setOnClickListener(v -> {
             if (listener != null) {
-//                setSelectedAction(ActionType.CONNECT);
+                setSelectedAction(ActionType.HOME);
                 listener.onConnectClick();
             }
         });
@@ -89,6 +91,7 @@ public class SearchActionsComponent extends LinearLayout {
         ivReload.setOnClickListener(v -> {
             if (listener != null) {
                 setSelectedAction(ActionType.HOME);
+//                Toast.makeText(getContext(), "Làm mới dữ liệu...", Toast.LENGTH_SHORT).show();
                 listener.onReloadClick();
             }
         });
