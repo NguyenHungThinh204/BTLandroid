@@ -5,6 +5,7 @@
     android:id="@+id/chatLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".ui.chat.ChatActivity"
     android:background="#FFFFFF">
 
     <!-- Top bar -->

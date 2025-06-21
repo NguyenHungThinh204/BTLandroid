@@ -14,9 +14,13 @@ import com.bumptech.glide.Glide;
 import com.example.btlandroid.R;
 import com.example.btlandroid.models.Post;
 import com.example.btlandroid.ui.BaseActivity;
+import com.example.btlandroid.ui.chat.ChatActivity;
+import com.example.btlandroid.utils.SharedPrefUtil;
 import com.example.btlandroid.utils.Util;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.imageview.ShapeableImageView;
+
+import java.util.Objects;
 
 public class PostDetailActivity extends BaseActivity {
 
@@ -73,7 +77,11 @@ public class PostDetailActivity extends BaseActivity {
         ivBack.setOnClickListener(v -> finish());
 
         btnContact.setOnClickListener(v -> {
-            // TODO: Implement contact functionality
+            Intent intent = new Intent(this, ChatActivity.class);
+            intent.putExtra("currentUserId", SharedPrefUtil.getString("userId", null));
+            intent.putExtra("receiverId", currentPost.getUserId());
+            intent.putExtra("receiverName", currentPost.getUserName());
+            startActivity(intent);
         });
 
         btnSave.setOnClickListener(v -> {
@@ -83,6 +91,10 @@ public class PostDetailActivity extends BaseActivity {
 
     private void displayPostData() {
         if (currentPost == null) return;
+
+        if (Objects.equals(currentPost.getUserId(), SharedPrefUtil.getString("userId", null))) {
+            btnContact.setVisibility(View.GONE);
+        }
 
         // Set basic post information
         tvPostTitle.setText(currentPost.getTitle());
