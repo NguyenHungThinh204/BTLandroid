@@ -33,6 +33,8 @@ public class RegisterActivity extends AppCompatActivity {
                 btnRegister.setText("Đang đăng ký...");
                 return;
             }
+            btnRegister.setEnabled(true);
+            btnRegister.setText("Đăng ký");
             Toast.makeText(this, liveData.message, Toast.LENGTH_SHORT).show();
             if (liveData.isSuccess) {
                 login();

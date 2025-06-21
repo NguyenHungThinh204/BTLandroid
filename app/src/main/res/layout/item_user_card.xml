@@ -27,10 +27,10 @@
         android:layout_marginTop="8dp" />
 
     <TextView
-        android:id="@+id/txtUserId"
+        android:id="@+id/txtPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ID: user1"
+        android:text=""
         android:textColor="#555555"
         android:textSize="12sp"
         android:layout_marginTop="4dp" />

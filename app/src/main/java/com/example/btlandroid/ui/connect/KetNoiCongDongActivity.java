@@ -1,5 +1,6 @@
 package com.example.btlandroid.ui.connect;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -21,13 +22,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.btlandroid.R;
 import com.example.btlandroid.adapter.UserCardAdapter;
 import com.example.btlandroid.models.User;
+import com.example.btlandroid.ui.BaseActivity;
+import com.example.btlandroid.ui.main.MainActivity;
 import com.example.btlandroid.utils.SharedPrefUtil;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class KetNoiCongDongActivity extends AppCompatActivity {
+public class KetNoiCongDongActivity extends BaseActivity {
 
     private RecyclerView recyclerView;
     private EditText searchBox;
@@ -67,6 +70,10 @@ public class KetNoiCongDongActivity extends AppCompatActivity {
 
         btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            intent.putExtra("fragment_id", R.id.navHome);
+            startActivity(intent);
             finish();
         });
     }

@@ -88,7 +88,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/lbName"
-                    android:text="@string/place_holder"
+                    android:text=""
                     android:textSize="16sp" />
             </RelativeLayout>
 
@@ -111,7 +111,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/lbPosition"
-                    android:text="@string/place_holder"
+                    android:text=""
                     android:textSize="16sp" />
             </RelativeLayout>
 
@@ -134,7 +134,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/lbDepartment"
-                    android:text="@string/place_holder"
+                    android:text=""
                     android:textSize="16sp" />
             </RelativeLayout>
 
@@ -157,7 +157,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/lbSkill"
-                    android:text="@string/place_holder"
+                    android:text=""
                     android:textSize="16sp" />
             </RelativeLayout>
 
@@ -180,7 +180,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/lbSubject"
-                    android:text="@string/place_holder"
+                    android:text=""
                     android:textSize="16sp" />
             </RelativeLayout>
 
@@ -203,13 +203,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/lbContact"
-                    android:text="@string/place_holder"
+                    android:text=""
                     android:textSize="16sp" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:paddingVertical="10dp">
 
                 <TextView
@@ -225,7 +226,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/lbAvailable"
-                    android:text="@string/place_holder"
+                    android:text=""
                     android:textSize="16sp" />
             </RelativeLayout>
 
@@ -248,7 +249,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/lbBio"
-                    android:text="@string/place_holder"
+                    android:text=""
                     android:textSize="16sp" />
             </RelativeLayout>
         </LinearLayout>
