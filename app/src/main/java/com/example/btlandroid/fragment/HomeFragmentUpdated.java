@@ -100,6 +100,12 @@ public class HomeFragmentUpdated extends Fragment implements SearchActionsCompon
         rvOfferHelpPosts.setLayoutManager(offerHelpLayoutManager);
         OfferHelpPostAdapter offerHelpAdapter = new OfferHelpPostAdapter(getContext(), offerHelpPosts);
         rvOfferHelpPosts.setAdapter(offerHelpAdapter);
+
+        // Thêm sự kiện click cho nút 'see more'
+        View tvSeeMoreNeedHelp = currentContentView.findViewById(R.id.tv_see_more_need_help);
+        View tvSeeMoreOfferHelp = currentContentView.findViewById(R.id.tv_see_more_offer_help);
+        tvSeeMoreNeedHelp.setOnClickListener(v -> showNeedHelpGrid());
+        tvSeeMoreOfferHelp.setOnClickListener(v -> showOfferHelpGrid());
     }
 
     private void showNeedHelpGrid() {

@@ -17,12 +17,14 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"
+        style="@style/CustomBottomNav"
         android:layout_width="0dp"
-        android:layout_height="55dp"
+        android:layout_height="56dp"
         android:background="@color/red"
         android:elevation="8dp"
         app:menu="@menu/bottom_nav"
         app:itemIconTint="@color/white"
+        app:itemIconSize="24dp"
         app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
